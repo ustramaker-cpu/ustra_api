@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="ko"><head><meta name="robots" content="noindex,nofollow"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-hEXgJnIUcNT84JWezbkRYTswPCCNDp0g9oRiCu2wmcA='; style-src 'sha256-DkSHg3wK70otfnFmG0vgAJ7BI4HiYN6PtN7RcPx08fA='; connect-src 'self'; img-src data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer"><title>U.STRA API Platform · UI Preview</title>
+<style>:root {
+  font-family: "Pretendard", "Noto Sans CJK KR", "Malgun Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #18283f; background: #e8f0f9; font-synthesis: none;
+  --blue:#2e59d9; --navy:#142d60; --mint:#05a78b; --border:#e5e9f0;
+  --muted:#758397; --shadow:0 2px 7px #2034540c,0 6px 24px #28467906;
+}
+*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.52}button,a,input,select,textarea{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible{outline:3px solid #89a7ff;outline-offset:3px}input:focus,select:focus,textarea:focus{outline:0;border-color:var(--blue);box-shadow:0 0 0 3px #365fe912}button{touch-action:manipulation}h1,h2,h3,p{margin:0}h1{font-size:25px;font-weight:750;letter-spacing:-.7px;line-height:1.35}h2{font-size:16px;font-weight:700;letter-spacing:-.3px}h3{font-size:15px;line-height:1.5}p{line-height:1.8}small{line-height:1.5}strong{font-weight:700}code,pre,.mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace}.muted{color:var(--muted);font-size:12px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.icon{width:19px;height:19px;flex-shrink:0;vertical-align:middle}.ustra-portal{min-height:100vh;font-size:13px;background:radial-gradient(ellipse at 84% 13%,#e3f6f9a1 0,transparent 47%),radial-gradient(ellipse at 17% 92%,#e5fbf894 0,transparent 55%),linear-gradient(125deg,#bfceed 0%,#eaf2fc 40%,#eeeefa 100%)}
+.topbar{height:66px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 28px;position:sticky;top:0;z-index:20;border-bottom:1px solid #e9edf4;box-shadow:0 1px 4px #27395d03}.logo{border:0;background:none;color:#111a2b;display:flex;align-items:center;gap:12px;padding:0;text-align:left;white-space:nowrap}.logo-mark{font-family:Arial,sans-serif;font-size:30px;letter-spacing:-2px;font-weight:800}.logo-mark span{font-size:21px;letter-spacing:-.5px}.logo-product{font-size:14px;font-weight:600;letter-spacing:-.3px;color:#53647f;border-left:1px solid #d6deeb;padding-left:12px}.top-nav{height:100%;display:flex;align-items:stretch;gap:18px}.top-link{min-width:76px;white-space:nowrap;border:0;background:none;padding:0 16px;color:#293345;font-weight:600;font-size:14px}.top-link.selected{background:var(--navy);color:#fff;border-radius:0 0 19px 19px;position:relative}.top-link.selected:before{content:'';position:absolute;top:10px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:#a7caff}.top-link:hover:not(.selected){background:#f6f8fc}.header-tools{display:flex;gap:15px;align-items:center}.header-avatar{background:#eaf0ff;border:1px solid #dbe4f5;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:12px;color:var(--navy);font-weight:700}.mode-pill{border:1px solid #d7e3fb;background:#f3f7ff;color:#315cbb;padding:6px 11px;border-radius:20px;font-size:11px;font-weight:600;display:flex;gap:6px;align-items:center;white-space:nowrap}.mode-pill .icon{width:13px;height:13px}.mode-pill.live{background:#edf9f5;color:#0a7560;border-color:#b7e4d7}.workspace{display:grid;grid-template-columns:228px minmax(0,1fr);gap:24px;padding:24px 26px 0 16px;max-width:2040px;margin:auto;align-items:start}.sidebar{position:sticky;top:90px;max-height:calc(100vh - 104px);overflow-y:auto;padding-right:2px;scrollbar-width:thin}.side-card{background:#ffffffeb;border-radius:14px;box-shadow:var(--shadow);border:1px solid #eaf0fa;padding:18px 13px}.profile-card{display:flex;align-items:center;gap:12px;min-height:82px}.avatar{width:42px;height:45px;display:grid;place-items:center;background:linear-gradient(150deg,#253f7b,#557ad2);border-radius:12px;color:#fff;font-size:23px;font-weight:700;flex-shrink:0}.profile-text{display:flex;flex-direction:column;min-width:0;gap:5px}.profile-text strong{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.profile-text span{font-size:10px;color:#77849a}.menu-search{position:relative;margin:15px 0}.menu-search input{width:100%;background:#ffffff70;border:1px solid #ffffff50;border-radius:22px;font-size:12px;height:35px;padding:8px 38px 8px 15px;outline:none;color:#33445d}.menu-search>.icon{position:absolute;right:12px;top:9px;width:17px;color:#8390a7}.side-toggle{height:35px;display:flex;align-items:center;justify-content:center;gap:10px;border-radius:22px;background:var(--blue);color:#fff;font-size:12px;font-weight:600;margin-bottom:18px;box-shadow:0 2px 8px #244aaa10}.side-toggle .icon{width:16px;height:16px}.nav-group{font-size:11px;color:#53657e;font-weight:600;letter-spacing:.3px;padding:18px 10px 7px}.nav-group:first-child{padding-top:0}.nav-item{width:100%;display:flex;gap:11px;align-items:center;border:0;background:none;padding:10px 13px;font-size:12px;color:#52617a;border-radius:9px;text-align:left;margin-bottom:2px;line-height:1.4;min-height:39px}.nav-item .icon{width:17px;height:17px;color:#72839b}.nav-item:hover{background:#ffffff85}.nav-item.active{background:#fff;color:var(--blue);font-weight:700;box-shadow:0 3px 12px #33559908}.nav-item.active .icon{color:var(--blue)}.sidebar-foot{margin:22px 8px 18px;padding-top:20px;border-top:1px solid #bccbe148}.side-foot-label{font-size:9px;font-weight:700;color:#6b809e;letter-spacing:1px}.sidebar-foot p{font-size:10px;line-height:1.7;margin:6px 0;color:#7c8ba2}.version-label{font-size:10px;color:#7f8ea5}.menu-empty{padding:15px}.stage{min-width:0}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 3px;margin-bottom:17px}.breadcrumb{font-size:10px;color:#7b8ba6;display:flex;gap:8px;margin-bottom:7px}.breadcrumb span{color:#a3afc1}.page-subtitle{font-size:12px;color:#6c7e98;margin-top:5px}.main-content{min-height:620px;display:flex;flex-direction:column;gap:18px}.mode-banner{background:#f6f9ffce;border:1px solid #ffffffa3;color:#647b9e;display:flex;align-items:center;gap:9px;padding:8px 12px;border-radius:9px;font-size:11px;line-height:1.5;margin-bottom:18px}.mode-banner>.icon{width:15px;height:15px}.mode-banner>span{flex:1}.mode-banner .text-button{font-size:10px}.mode-banner.connected{background:#edf8f4;border-color:#ceeee1;color:#3b7769}.page-footer{padding:18px 3px;display:flex;justify-content:space-between;gap:12px;color:#8a99af;font-size:10px}.card{background:#fff;border:1px solid #e5ebf4;border-radius:14px;padding:24px;box-shadow:var(--shadow);min-width:0}.card+.card{margin-top:18px}.main-content>.card+.card{margin-top:0}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid #d9e0ea;background:#fff;color:#304359;border-radius:6px;padding:8px 13px;font-size:12px;line-height:1.45;min-height:35px;white-space:nowrap;font-weight:500;transition:background .15s,border-color .15s}.btn:hover:not(:disabled){background:#f5f8ff;border-color:#9eb4ec}.btn .icon{width:15px;height:15px}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn.primary:hover:not(:disabled){background:#234ac5;border-color:#234ac5}.btn.navy{background:var(--navy);border-color:var(--navy);color:#fff}.btn.subtle{background:#ffffff80;border-color:#d3deed;color:#687c98}.btn.small{min-height:29px;padding:5px 10px;font-size:11px}.btn.tiny{padding:3px 7px;min-height:25px;font-size:10px}.btn.tiny .icon{width:11px;height:11px}.btn.danger{color:#bb4856;border-color:#efcbd1}.btn.full{width:100%}.icon-only{border:0;background:none;display:grid;place-items:center;position:relative;width:29px;height:29px;color:#7f8aa0;border-radius:50%;font-size:0}.icon-only:hover{background:#f0f4fb}.text-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:#6380ab;background:none;border:0;padding:5px 0;white-space:nowrap}.text-button:hover{color:var(--blue)}.text-button .icon{width:13px;height:13px}.cell-link{border:0;padding:0;background:none;color:#214dac;cursor:pointer;font-size:12px;text-align:left;line-height:1.7}.cell-link:hover{text-decoration:underline}.row-actions{display:flex;gap:5px;flex-wrap:wrap}.notice{border-radius:8px;background:#f5f8fe;border:1px solid #e5edfc;color:#647b9d;display:flex;align-items:flex-start;gap:9px;padding:12px 14px;font-size:11px;line-height:1.8;margin:14px 0 0}.notice>.icon{width:16px;height:16px;margin-top:2px;flex-shrink:0}.notice.warn{background:#fff8ec;border-color:#f7e7ca;color:#91692b}.notice+.notice{margin-top:10px}.subtle-note{font-size:11px;color:#7b879b;line-height:1.8;margin-top:14px}.eyebrow{font-size:10px;font-weight:700;letter-spacing:1.4px;color:#5278c9;line-height:1.5}.home-wrap>div{display:flex;flex-direction:column;gap:18px}.home-top{display:grid;grid-template-columns:2.2fr 1fr 1fr;gap:18px;align-items:stretch}.welcome-card{min-height:214px;border:1px solid #e1e9f6;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:25px 26px;display:flex;overflow:hidden;position:relative}.welcome-copy{position:relative;z-index:1;max-width:78%}.welcome-copy h2{font-size:23px;letter-spacing:-1px;line-height:1.55;margin:9px 0}.welcome-copy>p:not(.eyebrow){font-size:11px;color:#7c8ba3}.welcome-actions{display:flex;gap:8px;margin-top:18px}.welcome-art{position:absolute;right:14px;top:12px;width:155px;height:190px;opacity:.9;pointer-events:none}.art-core{position:absolute;left:55px;top:66px;width:68px;height:68px;border-radius:22px;background:linear-gradient(140deg,#dce8ff,#fff);border:1px solid #cedcf7;display:grid;place-items:center;color:#4268c0;font-size:21px;box-shadow:5px 7px 0 #c2d4f542;font-weight:700;transform:rotate(-6deg)}.art-node{position:absolute;background:#f6faff;border:1px solid #e0e9f7;border-radius:10px;width:37px;height:37px;display:grid;place-items:center;z-index:2;color:#7092d4}.art-node.n1{left:5px;top:24px}.art-node.n2{right:3px;top:17px;color:#12a891;background:#effbf7}.art-node.n3{left:15px;bottom:31px;color:#8876c5;background:#f6f4ff}.welcome-art:before{content:'';position:absolute;border:1px dashed #bfd0ed;width:130px;height:120px;top:36px;left:13px;border-radius:50%}.art-caption{position:absolute;bottom:4px;right:0;font-size:8px;letter-spacing:.6px;color:#8197b7}.metric-card{min-height:168px;border:1px solid #e1e9f6;background:#fff;border-radius:14px;padding:23px 21px;box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0}.metric-card:before{content:'';position:absolute;left:0;top:32px;bottom:32px;width:4px;border-radius:0 3px 3px 0;background:#628aff}.metric-top{display:flex;align-items:center;justify-content:space-between;gap:9px;font-size:12px;font-weight:600;color:#5f7394}.metric-icon{background:#edf3ff;color:#587ee1;width:35px;height:35px;border-radius:11px;display:grid;place-items:center}.metric-number{font-size:35px;line-height:1.5;color:#426bda;font-weight:550;letter-spacing:-1px;margin-top:7px}.metric-caption{font-size:10px;color:#8c9ab0}.metric-card.mint:before{background:#20c4a3}.metric-card.mint .metric-icon{background:#eafaf4;color:#1eae90}.metric-card.mint .metric-number{color:#0aad8b}.metric-card.purple:before{background:#9683d7}.metric-card.purple .metric-icon{background:#f3efff;color:#8671c0}.metric-card.purple .metric-number{color:#8873c0}.metric-card.amber:before{background:#e8b45a}.metric-card.amber .metric-icon{background:#fff7e6;color:#b28a42}.metric-card.amber .metric-number{color:#cc9640}.three-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-bottom:18px}.three-metrics .metric-card{min-height:144px;padding:17px 24px}.three-metrics .metric-number{font-size:30px;margin-top:0}.quick-card{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));padding:16px 10px;gap:5px}.quick-card.card{margin:0}.quick-item{border:0;border-radius:10px;background:none;padding:4px 0 5px;display:flex;flex-direction:column;gap:9px;align-items:center;color:#34485f;font-size:10px;white-space:nowrap}.quick-item:hover{background:#f4f7fd}.quick-icon{width:41px;height:41px;border-radius:50%;background:#f5f7fb;display:grid;place-items:center;color:#466795}.quick-icon .icon{width:20px;height:20px}.home-two{display:grid;grid-template-columns:1.8fr 1fr;gap:18px;align-items:stretch}.home-two>.card{margin:0}.mini-products{display:flex;flex-direction:column}.mini-product{border:0;border-bottom:1px solid #edf1f6;background:none;padding:15px 0;display:flex;align-items:center;gap:13px;text-align:left}.mini-product:last-child{border-bottom:0}.mini-product:hover strong{color:var(--blue)}.mini-product>div{flex:1;min-width:0}.mini-product strong{font-size:13px}.mini-product p{font-size:10px;color:#8693a6;margin-top:3px}.readiness-hero{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:11px}.readiness-count{display:flex;align-items:center;gap:15px}.readiness-count strong{font-size:36px;color:#2860cf;font-weight:500}.readiness-count span{font-size:12px;color:#61718c}.readiness-orbit{width:61px;height:61px;border:7px solid #f1f5fc;border-right-color:#a6bcea;border-bottom-color:#cedafa;border-radius:50%;display:grid;place-items:center;color:#6289d9}.readiness-orbit .icon{width:23px;height:23px}.readiness-card>p{font-size:11px}.status-rows{margin:14px 0 18px}.status-rows>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #f0f2f7;font-size:12px}.status-rows>div>span:first-child{color:#6d7d95}.status-rows strong{font-size:16px;color:#325ebc}
+.filter-bar{background:#f7f8fa;border:1px solid #f1f3f6;border-radius:8px;display:flex;gap:20px;align-items:end;padding:17px 19px;margin-bottom:10px;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field-label{font-size:11px;font-weight:600;color:#475970;display:flex;gap:4px;align-items:center}.required{color:#e85b70;font-weight:700}.field-hint{font-size:10px;color:#8693a5;line-height:1.7;display:block}.input{height:35px;border:1px solid #dce1e9;background:#fff;border-radius:5px;padding:7px 10px;color:#253b55;font-size:12px;min-width:0;width:100%;outline:none;transition:border-color .1s}.input::placeholder{color:#a0aabb;font-size:11px}.input:read-only:not(select){background:#f2f4f7;color:#687993}select.input{padding-right:22px}.input:disabled{background:#eef1f6;color:#7e8ca2;opacity:1}.input[type=file]{height:auto;min-height:39px;padding:8px}.input[type=file]::file-selector-button{border:1px solid #c8d6f2;border-radius:5px;padding:5px 12px;background:#f4f8ff;color:#365fb2;margin-right:12px;cursor:pointer}textarea.input{resize:vertical;height:auto;min-height:92px;line-height:1.7}.filter-bar>.field{flex:1;max-width:400px;min-width:140px}.catalog-filter>.field:first-child{flex:2.5;max-width:none}.catalog-filter>.field:nth-child(2){flex:1.4}.catalog-filter>.field:nth-child(3){max-width:135px}.filter-actions{display:flex;gap:7px}.result-toolbar{display:flex;gap:15px;align-items:center;justify-content:space-between;padding:14px 0 20px;flex-wrap:wrap}.toolbar-right{display:flex;align-items:center;gap:14px}.count{color:var(--blue);font-weight:650;margin-left:5px}.view-toggle{display:flex;border:1px solid #dce3ee;border-radius:6px;overflow:hidden}.toggle{border:0;background:#fff;display:flex;gap:6px;align-items:center;padding:6px 10px;color:#8c99ac;font-size:10px}.toggle+.toggle{border-left:1px solid #e5eaf2}.toggle.active{background:#f0f5ff;color:var(--blue)}.toggle .icon{width:13px;height:13px}.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.product-card{border:1px solid #e4e9f1;border-radius:11px;padding:20px 20px 0;min-height:255px;transition:box-shadow .16s,border-color .16s;display:flex;flex-direction:column;min-width:0;background:#fff}.product-card:hover{border-color:#9cb9f5;box-shadow:0 5px 21px #48649e10}.product-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}.product-symbol{display:grid;place-items:center;width:41px;height:41px;border-radius:12px;background:#edf3ff;color:#6687d5;flex-shrink:0}.product-symbol .icon{width:24px;height:24px}.product-symbol.mint{background:#eaf9f4;color:#15ac8e}.product-symbol.purple{background:#f1eefe;color:#9274cd}.product-symbol.amber{background:#fff6e7;color:#c99a40}.product-symbol.small{width:35px;height:35px;border-radius:9px}.product-symbol.small .icon{width:20px;height:20px}.product-symbol.big{width:58px;height:58px;border-radius:15px}.product-symbol.big .icon{width:31px;height:31px}.favorite{width:26px;height:27px;display:grid;place-items:center;border:0;background:transparent;color:#c0c9d7;padding:2px}.favorite .icon{width:17px;height:17px}.favorite.saved{color:#edb547}.favorite.saved .icon{fill:#ffecc1}.product-provider{font-size:10px;color:#7f8fa4;margin-bottom:5px}.product-title{font-size:16px;letter-spacing:-.4px;font-weight:700;border:0;background:none;text-align:left;color:#203553;padding:0;line-height:1.5}.product-title:hover{color:var(--blue)}.product-description{font-size:11px;color:#8190a4;line-height:1.85;margin:8px 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:40px}.product-code{font-size:9px;color:#93a2b7;letter-spacing:.4px;font-family:Consolas,monospace;margin-top:auto}.product-card-bottom{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #eef1f7;padding:13px 0;margin-top:13px;gap:8px}.badge{display:inline-flex;align-items:center;gap:5px;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:500;line-height:1.2;white-space:nowrap;vertical-align:middle;background:#eff4ff;color:#4b75c7}.status-dot{width:4px;height:4px;border-radius:50%;background:currentColor;flex-shrink:0}.badge.green{background:#eaf8f2;color:#2c9777}.badge.amber{background:#fff6e4;color:#b38336}.badge.red{background:#fceef0;color:#bf6272}.badge.gray{background:#f0f2f6;color:#8693a5}.pagination{display:flex;align-items:center;justify-content:space-between;padding:22px 0 0;margin-top:6px}.pagination .muted{font-size:11px}.pager-controls{display:flex;align-items:center;gap:13px}.page-number{font-size:12px;color:#697b96}.table-scroll{overflow:auto;max-width:100%;scrollbar-width:thin;border-top:1px solid #718199;border-bottom:1px solid #e5eaf2}.data-table{border-collapse:collapse;width:100%;font-size:12px;text-align:left;min-width:600px}.data-table th{background:#f7f8fa;color:#7a889d;font-size:10px;font-weight:500;padding:12px 11px;border-bottom:1px solid #e1e6ee;white-space:nowrap}.data-table td{padding:13px 11px;border-bottom:1px solid #eef1f5;color:#334962;vertical-align:middle;line-height:1.65;font-size:11px}.data-table tr:last-child td{border-bottom:0}.data-table tbody tr:hover{background:#fafcff}.data-table code{font-size:10px;color:#6780a5}.data-table .mono{font-size:10px;max-width:156px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;display:inline-block;vertical-align:middle}.table-product{display:flex;align-items:center;gap:12px}.table-product>div{display:flex;flex-direction:column;gap:3px}.truncate{display:inline-block;max-width:230px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:middle}.list-meta{display:flex;justify-content:space-between;gap:10px;font-size:11px;padding:15px 0}.list-meta .muted{font-size:10px}.tabs{display:flex;border-bottom:1px solid var(--blue);margin:7px 0 20px;gap:0;overflow:auto;scrollbar-width:none}.tab{border:1px solid #e0e5ef;border-bottom:0;background:#fff;border-radius:6px 6px 0 0;padding:11px 17px;font-size:12px;color:#7d8ba0;white-space:nowrap;margin-right:1px}.tab.active{border-color:var(--blue);color:var(--blue);font-weight:700;background:#fdfdff}.tab:not(.active):hover{background:#f6f8fc}.empty{min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:34px 20px;text-align:center}.empty-icon{width:56px;height:56px;background:#f2f6fc;color:#9aaccc;border-radius:50%;display:grid;place-items:center;margin-bottom:7px}.empty-icon .icon{width:26px;height:26px}.empty h3{font-size:15px;color:#5d7091}.empty p{font-size:12px;color:#92a0b6;max-width:520px}.empty .btn{margin-top:10px}.loading{min-height:170px;display:flex;align-items:center;justify-content:center;gap:12px;color:#8293ac;font-size:12px}.spinner{width:22px;height:22px;border:2px solid #e2eaf8;border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.error-panel{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px;padding:25px 18px;background:#fff;border:1px solid #f0e2e6;border-radius:11px;color:#915b66;margin-top:8px}.error-panel h3{color:#8f5260}.error-panel p{font-size:12px;max-width:570px;color:#976e79}.error-panel .empty-icon{color:#cb98a3;background:#fbf1f3}.error-code{font-size:10px;color:#a9828a}.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#173761;color:#fff;box-shadow:0 5px 25px #17233f30;border-radius:9px;padding:13px 20px;display:flex;gap:10px;align-items:center;font-size:12px;z-index:150}.toast .icon{width:16px;height:16px}
+.dialog{border:1px solid #e4e9f2;border-radius:17px;box-shadow:0 24px 90px #0b1c3c30;padding:0;color:#22354e;width:min(840px,calc(100vw - 36px));max-height:calc(100vh - 64px);overflow:auto;scrollbar-width:thin}.dialog::backdrop{background:#23395865;backdrop-filter:blur(3px)}.dialog-header{display:flex;gap:20px;align-items:flex-start;justify-content:space-between;padding:23px 28px 20px;border-bottom:1px solid #e8edf5;background:#fff;position:sticky;top:0;z-index:2}.dialog-header h2{font-size:21px;letter-spacing:-.6px;margin:7px 0 3px}.dialog-header .muted{font-size:11px;word-break:break-all}.dialog-body{padding:24px 28px;min-height:160px}.dialog-body .table-scroll{margin:12px 0}.dialog-body .section-heading{margin-top:20px}.dialog-footer{padding:17px 28px;display:flex;gap:9px;align-items:center;justify-content:flex-end;border-top:1px solid #edf0f6;background:#fcfdff;position:sticky;bottom:0;z-index:2}.dialog-footer:empty{display:none}.dialog-close{flex-shrink:0}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 22px}.span-two,.form-status,.form-grid>.form-actions{grid-column:1/-1}.form-actions{display:flex;gap:10px;justify-content:flex-end;align-items:center;padding-top:12px;flex-wrap:wrap}.form-status:empty{display:none}.form-status .loading{min-height:80px}.inline-form{display:flex;gap:12px;align-items:end;margin-top:22px;background:#f6f8fc;border-radius:8px;padding:15px}.inline-form>.field{flex:1}.kv{display:grid;grid-template-columns:145px minmax(0,1fr);margin:13px 0 5px;border-top:1px solid #e3e8f0}.kv dt,.kv dd{margin:0;padding:13px 14px;border-bottom:1px solid #e9edf4;font-size:12px;min-width:0;line-height:1.7}.kv dt{color:#8391a7;background:#f7f8fb;font-size:11px}.kv dd{color:#344b67;word-break:break-word}.kv .mono{word-break:break-all;font-size:10px;line-height:1.8}.copy-field{display:flex;align-items:center;gap:9px;min-width:0}.copy-field>.mono{flex:1;min-width:0}.copy-temp{position:fixed;top:-5000px}.detail-intro{display:flex;gap:20px;align-items:center;padding:8px 0 20px}.detail-intro h3{font-size:19px;margin-bottom:6px}.detail-intro p{font-size:12px;color:#75859e}.result-panel{padding:8px 0}.result-panel>h3{font-size:20px;letter-spacing:-.5px;margin:10px 0 16px}.success-emblem{display:grid;place-items:center;width:51px;height:51px;border-radius:50%;color:#23a38c;background:#e9f9f3}.success-emblem .icon{width:27px;height:27px}.flow-strip,.lifecycle-strip{display:flex;align-items:center;justify-content:center;background:#f4f7fd;padding:14px;gap:14px;border-radius:9px;color:#8b99b0;font-size:11px;margin-bottom:24px;white-space:nowrap}.flow-strip .active,.lifecycle-strip .current{color:#416dc8;font-weight:700}.flow-strip>.icon,.lifecycle-strip>.icon{width:12px;height:12px;color:#bfcbdf}.id-list{display:flex;flex-direction:column;gap:6px;overflow-wrap:anywhere;font-size:11px}.check-item{display:flex;gap:12px;border:1px solid #efe6d7;border-radius:8px;padding:15px;margin-top:10px}.check-item strong{font-size:11px;color:#886933;word-break:break-all}.check-item p{font-size:12px;margin-top:4px;color:#7e8c9e}.check-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:50%;color:#bc963e;background:#fff7e5;flex-shrink:0}.check-icon .icon{width:16px;height:16px}.readiness-verdict{margin:4px 0 16px}.readiness-verdict .badge{font-size:13px;padding:8px 12px}.two-column{display:grid;grid-template-columns:2fr 1fr;gap:18px;align-items:start}.two-column>.card+.card{margin:0}.upload-zone{border:1px dashed #b8caec;background:#f8faff;border-radius:12px;padding:24px;text-align:center;margin:22px 0}.upload-icon{width:49px;height:49px;background:#eaf1ff;color:#658cda;border-radius:14px;display:grid;place-items:center;margin:0 auto 12px}.upload-icon .icon{width:25px;height:25px}.upload-zone h3{font-size:15px;margin-bottom:7px}.upload-zone>.field{margin:20px auto 5px;max-width:390px;text-align:left}.file-summary{font-size:11px;color:#6f84a7;margin:12px 0 0;word-break:break-all}.import-form{font-size:12px}.import-policy h3{font-size:12px;margin:20px 0 7px}.import-policy>p{font-size:11px}.steps{list-style:none;counter-reset:step;padding:0;margin:0}.steps li{counter-increment:step;position:relative;padding:0 0 24px 38px}.steps li:before{content:counter(step);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:#eef3ff;color:#557bd2;font-size:11px;font-weight:700}.steps li:not(:last-child):after{content:'';position:absolute;left:11px;top:31px;bottom:7px;border-left:1px solid #dce5f5}.steps strong{font-size:12px}.steps p{font-size:11px;color:#8292a8;line-height:1.8;margin-top:5px}.compact-form{display:flex;align-items:end;gap:15px;flex-wrap:wrap}.compact-form>.field{flex:1}.compact-form>div:last-child:not(.field){width:100%}.compact-form>div:last-child:empty{display:none}.audit-filter{gap:13px}.audit-filter>.field{min-width:128px;flex:1}.settings-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}.settings-grid>.card{margin:0}.connection-summary{display:flex;align-items:center;gap:16px;margin:6px 0 20px}.connection-icon{width:50px;height:50px;background:#ecf3ff;color:#6f90d8;display:grid;place-items:center;border-radius:13px}.connection-icon .icon{width:25px;height:25px}.connection-summary h3{font-size:17px;margin-bottom:4px}.connection-summary p{font-size:11px}.connect-form{margin-top:23px}.scenario-control{border-top:1px solid #edf0f6;padding-top:20px;margin-top:20px;display:flex;gap:12px;align-items:end}.scenario-control .field{flex:1}.run-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}.run-steps>div{border-right:1px solid #edf1f6;padding-right:20px}.run-steps>div:last-child{border:0}.step-number{font-size:11px;font-weight:600;color:#547cd0;background:#eff4ff;display:inline-block;padding:4px 8px;border-radius:6px;margin-bottom:10px}.run-steps h3{font-size:14px;margin-bottom:7px}.run-steps p{font-size:11px;color:#7a8ca5}.command{background:#142b4b;color:#e5efff;font-size:12px;line-height:1.8;overflow:auto;padding:18px 22px;border-radius:8px;margin:23px 0 0}.skip-link{position:fixed;top:-60px;left:20px;z-index:500;background:#fff;color:#123568;padding:12px;box-shadow:var(--shadow)}.skip-link:focus{top:10px}
+@media(min-width:1700px){.workspace{grid-template-columns:242px minmax(0,1fr);gap:27px}.home-top{grid-template-columns:2.35fr 1fr 1fr}.welcome-art{right:20px;width:185px;transform:scale(1.12);transform-origin:right center}.catalog-grid{gap:22px}.product-card{min-height:273px;padding:23px 24px 0}.top-nav{gap:28px}.main-content{min-height:720px}}
+@media(max-width:1250px){.logo-product{display:none}.top-nav{gap:5px}.top-link{min-width:63px;padding:0 11px}.workspace{grid-template-columns:195px minmax(0,1fr);gap:17px;padding-right:17px}.card{padding:20px}.welcome-art{opacity:.3;right:5px}.welcome-copy{max-width:95%}.welcome-copy h2{font-size:21px}.home-top{grid-template-columns:1.8fr 1fr 1fr;gap:13px}.home-two{grid-template-columns:1.6fr 1fr}.quick-item{font-size:9px}.product-card{padding:17px 16px 0}.product-title{font-size:15px}.catalog-grid{gap:13px}.header-tools{gap:8px}.settings-grid{grid-template-columns:1fr}.filter-bar{gap:12px}}
+@media(max-width:980px){.workspace{grid-template-columns:176px minmax(0,1fr);padding-left:10px;padding-right:12px;gap:13px}.topbar{padding:0 18px;gap:10px}.top-nav{gap:0}.top-link{min-width:56px;font-size:12px}.mode-pill{font-size:10px;padding:6px 8px}.header-tools>.icon-only{display:none}.header-tools{gap:8px}.profile-text span{font-size:9px}.profile-card{gap:8px;padding:12px 9px}.avatar{width:33px;height:38px}.nav-item{font-size:11px;padding:10px}.home-top{grid-template-columns:1fr 1fr}.welcome-card{grid-column:1/-1;min-height:204px}.welcome-art{opacity:.9;right:50px}.metric-card{min-height:132px}.home-two{grid-template-columns:1fr}.quick-card{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.quick-item{font-size:11px}.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-column{grid-template-columns:1fr}.catalog-filter>.field:first-child{flex-basis:100%}.three-metrics{gap:10px}.three-metrics .metric-card{padding:15px}.metric-top{font-size:10px}.metric-icon{width:27px;height:27px}.card{padding:18px}.mode-banner{font-size:10px}.audit-filter>.field{min-width:140px}.run-steps{gap:14px}.page-heading h1{font-size:23px}}
+@media(max-width:720px){.topbar{height:auto;min-height:61px;flex-wrap:wrap;gap:0;padding:0 14px}.logo{height:57px}.logo-product{display:inline;font-size:11px;gap:8px}.logo-mark{font-size:26px}.logo-mark span{font-size:18px}.top-nav{order:3;width:100%;height:41px;justify-content:space-between;border-top:1px solid #edf1f8}.top-link{height:40px;flex:1;padding:0 4px}.top-link.selected{border-radius:8px 8px 0 0}.top-link.selected:before{display:none}.header-tools{margin-left:auto}.header-avatar{display:none}.workspace{display:block;padding:18px 12px 0}.sidebar{display:none}.page-heading{margin-bottom:12px}.page-heading h1{font-size:22px}.breadcrumb{font-size:9px}.page-subtitle{font-size:11px}.page-heading>.btn{font-size:10px;padding:6px 9px}.mode-banner .text-button{display:none}.main-content{min-height:400px;gap:14px}.card{padding:17px 14px;border-radius:11px}.home-top,.home-two{gap:12px}.welcome-card{padding:22px;min-height:218px}.welcome-art{right:16px;opacity:.38}.welcome-copy h2{font-size:22px}.welcome-copy>p:not(.eyebrow){font-size:10px}.metric-card{padding:17px 20px;min-height:148px}.metric-number{font-size:29px}.three-metrics{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.three-metrics .metric-card{padding:12px;min-height:130px}.metric-top{font-size:10px;line-height:1.6}.three-metrics .metric-icon{display:none}.metric-caption{font-size:9px;line-height:1.6}.three-metrics .metric-number{font-size:26px}.catalog-grid{grid-template-columns:1fr;gap:13px}.product-card{min-height:232px;padding:19px 20px 0}.product-description{min-height:auto}.filter-bar{padding:13px;gap:13px}.filter-bar>.field{min-width:115px}.catalog-filter>.field:nth-child(3){max-width:none}.filter-actions{width:100%;justify-content:flex-end}.result-toolbar{gap:12px}.toolbar-right{gap:10px;flex-wrap:wrap}.toolbar-right>.muted{display:none}.data-table{min-width:650px}.tab{font-size:11px;padding:10px 13px}.pagination{align-items:center;gap:8px}.pagination>.muted{font-size:9px}.pager-controls{gap:7px}.page-number{font-size:10px}.dialog{max-height:calc(100dvh - 28px);width:calc(100vw - 22px);border-radius:12px}.dialog-header{padding:19px 18px}.dialog-header h2{font-size:19px}.dialog-body{padding:19px 17px}.dialog-footer{padding:13px 17px}.form-grid{grid-template-columns:1fr;gap:15px}.span-two{grid-column:auto}.kv{grid-template-columns:110px minmax(0,1fr)}.kv dt,.kv dd{padding:11px 10px;font-size:11px}.kv dt{font-size:10px}.dialog .flow-strip,.dialog .lifecycle-strip{font-size:10px;gap:8px;padding:12px 8px}.upload-zone{padding:20px 14px}.import-form>.form-grid{grid-template-columns:1fr}.run-steps{grid-template-columns:1fr;gap:20px}.run-steps>div{border-right:0;border-bottom:1px solid #edf1f6;padding-bottom:16px}.settings-grid{gap:14px}.scenario-control{flex-wrap:wrap}.compact-form>.field{flex-basis:100%}.page-footer{font-size:9px}.detail-intro{align-items:flex-start}.detail-intro h3{font-size:17px}.welcome-actions .btn{font-size:11px}.toast{max-width:calc(100vw - 30px);width:max-content;font-size:11px}.command{font-size:10px;padding:16px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}
+
+.mobile-route{display:none}@media(max-width:720px){.mobile-route{display:block;margin:0 0 14px}.mobile-route .input{height:38px;border-color:#ccd9ee;background:#ffffffd9}}
+</style></head><body><div id="root"></div>
+<noscript>화면 미리보기에는 JavaScript가 필요합니다. 이 파일은 서버에 데이터를 전송하지 않는 예시 모드로 시작합니다.</noscript>
+<script>"use strict";(()=>{const modules={
+"data":function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DemoRepository = exports.LiveRepository = exports.RESOURCE_PATHS = exports.PortalError = exports.DEMO_PROVIDERS = exports.DEMO_CONTEXT = exports.demoId = void 0;
+exports.queryString = queryString;
+exports.safeId = safeId;
+exports.pageOf = pageOf;
+exports.checkFile = checkFile;
+exports.validateRecovery = validateRecovery;
+const M = require("./models");
+/** Synthetic fixtures only; no customer data or imported HR personal information. */
+const demoId = (n) => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
+exports.demoId = demoId;
+exports.DEMO_CONTEXT = { tenantId: (0, exports.demoId)(1), tenantCode: 'USTRA-DEMO', organizationId: (0, exports.demoId)(2), principalId: 'demo.operator', membershipId: (0, exports.demoId)(3), roles: ['DEMO_VIEWER'], locale: 'ko-KR' };
+const stamp = '2026-09-22T10:00:00Z';
+exports.DEMO_PROVIDERS = [
+    { providerId: (0, exports.demoId)(10), providerCode: 'HR', displayName: '인사 서비스' },
+    { providerId: (0, exports.demoId)(11), providerCode: 'ERP', displayName: '재무 서비스' },
+    { providerId: (0, exports.demoId)(12), providerCode: 'WORKS', displayName: '업무 협업' },
+    { providerId: (0, exports.demoId)(13), providerCode: 'COMMERCE', displayName: '커머스 서비스' }
+];
+const seeds = [
+    ['HR-EMPLOYEE', '임직원 정보', '조직의 임직원 기본정보를 조회하고 사내 서비스와 연결합니다.', 0],
+    ['HR-ORGANIZATION', '조직 정보', '조직 구성과 부서 정보를 업무 시스템에서 활용합니다.', 0],
+    ['ERP-COST-CENTER', '원가센터 조회', '재무 기준정보의 원가센터를 조회하는 API Product입니다.', 1],
+    ['WORKS-APPROVAL', '전자결재 조회', '기안 문서와 결재 진행 상태를 조회합니다.', 2],
+    ['COMMERCE-ORDER', '주문 정보', '주문 접수 내역과 처리 상태를 연계합니다.', 3],
+    ['WORKS-DOCUMENT', '문서 메타데이터', '문서의 식별정보와 분류 메타데이터를 조회합니다.', 2],
+    ['ERP-VENDOR', '거래처 정보', '기업 내 거래처 기준정보를 업무에 활용합니다.', 1],
+    ['COMMERCE-INVENTORY', '재고 현황', '상품별 가용 재고를 확인하는 조회 서비스입니다.', 3],
+    ['HR-ATTENDANCE', '근태 현황', '근무 일정과 근태 요약 정보를 조회합니다.', 0],
+];
+class PortalError extends Error {
+    code;
+    status;
+    correlationId;
+    uncertain;
+    constructor(code, message, status = 0, correlationId = '', uncertain = false) {
+        super(message);
+        this.code = code;
+        this.status = status;
+        this.correlationId = correlationId;
+        this.uncertain = uncertain;
+        this.name = 'PortalError';
+    }
+}
+exports.PortalError = PortalError;
+exports.RESOURCE_PATHS = { operations: 'admin/operations/integration-operations', issues: 'admin/operations/reconciliation-issues', outbox: 'admin/operations/outbox-events', connectors: 'admin/operations/connectors', failures: 'admin/operations/search-failures', audit: 'admin/audit-records' };
+function queryString(q) { const p = new URLSearchParams(); for (const [k, v] of Object.entries(q))
+    if (v !== undefined && v !== '')
+        p.set(k, String(v)); return p.size ? '?' + p.toString() : ''; }
+function safeId(id) { if (!/^[A-Za-z0-9._:-]{1,200}$/.test(id))
+    throw new PortalError('INVALID_ID', '식별자 형식이 올바르지 않습니다.'); return encodeURIComponent(id); }
+function pageOf(items, q) { const page = Number(q.page ?? 0), size = Number(q.size ?? 20); return { items: items.slice(page * size, (page + 1) * size), page, size, totalElements: items.length, hasNext: (page + 1) * size < items.length, asOf: stamp }; }
+function checkFile(file) { if (!file.size)
+    throw new PortalError('EMPTY_FILE', '빈 파일은 선택할 수 없습니다.'); if (file.size > 2 * 1024 * 1024)
+    throw new PortalError('FILE_TOO_LARGE', '화면 기술 제한은 2 MiB입니다. 서버의 실제 제한은 별도로 적용됩니다.'); if (!/\.(json|yaml|yml)$/i.test(file.name))
+    throw new PortalError('FILE_TYPE', 'JSON 또는 YAML 문서를 선택해 주세요.'); }
+function validateRecovery(body) { if (!Object.hasOwn(M.RECOVERY_TYPES, body.actionType) || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(body.targetId))
+    throw new PortalError('INVALID_RECOVERY', '허용된 작업과 UUID 대상 ID가 필요합니다.'); if (body.expectedTargetVersion !== null && (!Number.isSafeInteger(body.expectedTargetVersion) || body.expectedTargetVersion < 0))
+    throw new PortalError('INVALID_REVISION', '대상 revision은 0 이상의 정수여야 합니다.'); if (body.actionType === 'SEARCH_TENANT_REBUILD' && body.expectedTargetVersion !== null)
+    throw new PortalError('INVALID_REVISION', 'Tenant 전체 재생성에는 revision을 입력하지 않습니다.'); }
+class LiveRepository {
+    mode = 'live';
+    token = '';
+    constructor(token = '') { if (token.length > 8192 || /[\r\n\x00]/.test(token))
+        throw new PortalError('INVALID_TOKEN', '인증정보 형식이 올바르지 않습니다.'); this.token = token; }
+    clear() { this.token = ''; }
+    async call(path, parse, options = {}) {
+        if (!/^[a-z0-9-]+(?:\/[A-Za-z0-9._:%-]+)*(?:\?[^#]*)?$/.test(path) || path.split('?')[0].includes('..'))
+            throw new PortalError('PATH_BLOCKED', '허용되지 않는 API 경로입니다.');
+        const ctrl = new AbortController();
+        let timedOut = false;
+        const abort = () => ctrl.abort();
+        options.signal?.addEventListener('abort', abort, { once: true });
+        if (options.signal?.aborted)
+            ctrl.abort();
+        const timer = setTimeout(() => { timedOut = true; ctrl.abort(); }, 15000); // UI wait bound, not a business SLA/retry policy.
+        const method = options.method ?? 'GET';
+        const headers = { Accept: 'application/json' };
+        if (this.token)
+            headers.Authorization = 'Bearer ' + this.token;
+        if (options.key)
+            headers['Idempotency-Key'] = options.key;
+        if (options.revision !== undefined)
+            headers['If-Match'] = '"' + options.revision + '"';
+        if (options.body !== undefined)
+            headers['Content-Type'] = 'application/json';
+        try {
+            const response = await fetch('/api/v1/' + path, { method, headers, credentials: 'same-origin', cache: 'no-store', redirect: 'error', body: options.form ?? (options.body === undefined ? undefined : JSON.stringify(options.body)), signal: ctrl.signal });
+            // A response is validated even when the server returned HTTP 2xx.
+            const raw = await response.text();
+            if (raw.length > 4 * 1024 * 1024)
+                throw new PortalError('RESPONSE_LIMIT', '응답 크기 제한을 초과했습니다.', response.status, '', method !== 'GET');
+            let data;
+            try {
+                data = raw ? JSON.parse(raw) : null;
+            }
+            catch {
+                throw new PortalError('RESPONSE_FORMAT', 'JSON 응답을 확인할 수 없습니다. 프록시와 API 경로를 확인해 주세요.', response.status, '', method !== 'GET');
+            }
+            if (!response.ok) {
+                const o = (data && typeof data === 'object' ? data : {});
+                const correlation = typeof o.correlationId === 'string' ? o.correlationId.slice(0, 100) : '';
+                const msg = response.status === 401 ? '로그인 또는 인증정보를 확인해 주세요.' : response.status === 403 ? '현재 사용자에게 이 기능의 서버 권한이 없습니다.' : response.status === 409 ? '동시 변경 또는 동일 요청 충돌입니다. 상태를 재조회해 주세요.' : response.status >= 500 ? '서버 처리 오류입니다. 자동으로 재전송하지 않습니다.' : '요청을 처리할 수 없습니다. 입력값과 대상 상태를 확인해 주세요.';
+                throw new PortalError(typeof o.code === 'string' && /^[A-Z0-9_]{1,120}$/.test(o.code) ? o.code : 'HTTP_' + response.status, msg, response.status, correlation, response.status >= 500 && method !== 'GET');
+            }
+            try {
+                return parse(data);
+            }
+            catch (err) {
+                if (err instanceof PortalError)
+                    throw err;
+                throw new PortalError('RESPONSE_CONTRACT', '서버 응답이 확인된 화면 계약과 다릅니다. 임의 데이터로 대체하지 않습니다.', response.status, '', method !== 'GET');
+            }
+        }
+        catch (e) {
+            if (e instanceof PortalError)
+                throw e;
+            if (ctrl.signal.aborted && !timedOut)
+                throw new DOMException('화면 요청 취소', 'AbortError');
+            throw new PortalError(timedOut ? 'UI_TIMEOUT' : 'NETWORK_ERROR', timedOut ? '응답 대기시간을 초과했습니다. 서버 처리 결과는 별도로 확인해야 합니다.' : '서버에 연결할 수 없습니다. 예시 데이터로 자동 전환하지 않습니다.', 0, '', method !== 'GET');
+        }
+        finally {
+            clearTimeout(timer);
+            options.signal?.removeEventListener('abort', abort);
+        }
+    }
+    context(signal) { return this.call('me/tenant-context', M.parseContext, { signal }); }
+    catalog(q, signal) { return this.call('catalog-search' + queryString(q), v => M.parsePage(v, M.parseCatalog), { signal }); }
+    products(signal) { return this.call('api-products', v => M.array(v, M.parseProduct), { signal }); }
+    product(id, signal) { return this.call('api-products/' + safeId(id), M.parseProduct, { signal }); }
+    saveProduct(b, id, revision) { if (id) {
+        if (revision === undefined)
+            throw new PortalError('REVISION_REQUIRED', '현재 revision이 필요합니다.');
+        const { productCode: _, ...body } = b;
+        return this.call('api-products/' + safeId(id), M.parseProduct, { method: 'PATCH', body, revision });
+    } return this.call('api-products', M.parseProduct, { method: 'POST', body: b }); }
+    versions(id, signal) { return this.call('api-products/' + safeId(id) + '/versions', v => M.array(v, M.parseVersion), { signal }); }
+    createVersion(id, version) { return this.call('api-products/' + safeId(id) + '/versions', M.parseVersion, { method: 'POST', body: { version } }); }
+    components(id, signal) { return this.call('api-product-versions/' + safeId(id) + '/components', v => M.array(v, M.parseComponent), { signal }); }
+    readiness(id, signal) { return this.call('api-product-versions/' + safeId(id) + '/publish-readiness', M.parseReadiness, { signal }); }
+    apps(signal) { return this.call('consumer-apps', v => M.array(v, M.parseApp), { signal }); }
+    saveApp(body) { return this.call('consumer-apps', M.parseApp, { method: 'POST', body }); }
+    activateApp(id, revision) { return this.call('consumer-apps/' + safeId(id) + '/activate', M.parseApp, { method: 'POST', revision }); }
+    environments(id, signal) { return this.call('consumer-apps/' + safeId(id) + '/environments', v => M.array(v, M.parseEnvironment), { signal }); }
+    createEnvironment(id, type) { return this.call('consumer-apps/' + safeId(id) + '/environments', M.parseEnvironment, { method: 'POST', body: { environmentType: type, gatewayClientReference: null, iamApplicationReference: null, authenticationMethod: null } }); }
+    request(id, signal) { return this.call('subscription-requests/' + safeId(id), M.parseRequest, { signal }); }
+    createRequest(body, key) { return this.call('subscription-requests', M.parseRequest, { method: 'POST', body, key }); }
+    cancelRequest(id, revision) { return this.call('subscription-requests/' + safeId(id) + '/cancel', M.parseRequest, { method: 'POST', revision }); }
+    entitlements(signal) { return this.call('entitlements', v => M.array(v, M.parseEntitlement), { signal }); }
+    importFile(providerId, apiCode, file, key) { checkFile(file); const form = new FormData(); form.append('providerId', providerId); form.append('apiCode', apiCode); form.append('file', file); return this.call('api-imports', M.parseImport, { method: 'POST', form, key }); }
+    importResult(id, signal) { return this.call('api-imports/' + safeId(id), M.parseImport, { signal }); }
+    summary(signal) { return this.call('admin/operations/summary', M.parseSummary, { signal }); }
+    rows(kind, q, signal) { const path = exports.RESOURCE_PATHS[kind]; if (!path)
+        throw new PortalError('RESOURCE_INVALID', '존재하지 않는 조회입니다.'); return this.call(path + queryString(q), v => M.parsePage(v, x => M.safeRow(x, kind)), { signal }); }
+    recover(body, key) { validateRecovery(body); return this.call('admin/operations/recovery-actions', v => M.safeRow(v, 'recovery'), { method: 'POST', body, key }); }
+    recovery(id, signal) { return this.call('admin/operations/recovery-actions/' + safeId(id), v => M.safeRow(v, 'recovery'), { signal }); }
+    subscriptions(signal) { return this.call('subscriptions', v => M.array(v, x => M.safeRow(x, 'subscriptions')), { signal }); }
+}
+exports.LiveRepository = LiveRepository;
+class DemoRepository {
+    mode = 'demo';
+    scenario = 'normal';
+    productsData;
+    versionsData = [];
+    appsData = [];
+    envs = [];
+    requestsData = [];
+    entitlementsData = [];
+    imports = new Map();
+    recoveries = new Map();
+    replay = new Map();
+    constructor() {
+        this.productsData = seeds.map((s, i) => ({ apiProductId: (0, exports.demoId)(100 + i), productCode: s[0], name: s[1], description: s[2], providerId: exports.DEMO_PROVIDERS[s[3]].providerId, ownerMembershipId: exports.DEMO_CONTEXT.membershipId, lifecycleState: 'ACTIVE', revision: 2, createdAt: stamp, updatedAt: stamp }));
+        this.productsData.push({ apiProductId: (0, exports.demoId)(150), productCode: 'ERP-BUDGET', name: '예산 현황', description: '신규 Product 초안입니다. 게시 준비 조건을 먼저 확인합니다.', providerId: (0, exports.demoId)(11), ownerMembershipId: (0, exports.demoId)(3), lifecycleState: 'DRAFT', revision: 0, createdAt: stamp, updatedAt: stamp });
+        for (let i = 0; i < this.productsData.length; i++)
+            this.versionsData.push({ apiProductVersionId: (0, exports.demoId)(200 + i), apiProductId: this.productsData[i].apiProductId, version: '1.0.0', lifecycleState: i < 9 ? 'RELEASED' : 'DRAFT', revision: i < 9 ? 2 : 0 });
+        this.versionsData.push({ apiProductVersionId: (0, exports.demoId)(220), apiProductId: (0, exports.demoId)(100), version: '1.1.0', lifecycleState: 'RELEASED', revision: 2 });
+        ['통합 업무 포털', '임직원 모바일', '재무 리포팅'].forEach((name, i) => { this.appsData.push({ consumerAppId: (0, exports.demoId)(400 + i), appCode: ['WORK-PORTAL', 'EMPLOYEE-MOBILE', 'FINANCE-REPORT'][i], name, description: ['사내 업무를 한곳에서 연결하는 포털', '모바일 임직원 서비스', '재무 기준정보와 보고서 연계'][i], ownerMembershipId: (0, exports.demoId)(3), organizationId: (0, exports.demoId)(2), lifecycleState: i === 2 ? 'SUSPENDED' : 'ACTIVE', revision: 1, createdAt: stamp, updatedAt: stamp }); this.envs.push({ consumerAppEnvironmentId: (0, exports.demoId)(500 + i), consumerAppId: (0, exports.demoId)(400 + i), environmentType: ['TEST', 'DEV', 'DEV'][i], revision: 0 }); });
+        ['COMPLETED', 'PENDING_APPROVAL', 'SUBMITTED'].forEach((status, i) => this.requestsData.push({ subscriptionRequestId: (0, exports.demoId)(600 + i), consumerAppEnvironmentId: (0, exports.demoId)(500 + (i % 2)), catalogPublicationId: (0, exports.demoId)(300 + i), apiProductVersionId: (0, exports.demoId)(200 + i), requesterMembershipId: (0, exports.demoId)(3), status, currentRevisionNo: 1, purpose: ['업무 포털에서 임직원 정보 조회', '모바일 조직도 연결', '재무 기준정보 조회'][i], expectedCallVolume: '시연용 예시', snapshotHash: 'DEMO-SNAPSHOT-NOT-SERVER-HASH', requestedApiOperationIds: [(0, exports.demoId)(700 + i)], revision: 1, createdAt: stamp, updatedAt: stamp }));
+        for (let i = 0; i < 2; i++) {
+            const base = this.requestsData[i + 1];
+            this.requestsData.push({ ...base, subscriptionRequestId: (0, exports.demoId)(610 + i), consumerAppEnvironmentId: (0, exports.demoId)(501 + i), status: 'COMPLETED', purpose: i === 0 ? '기존 조직도 연계 승인 건' : '기존 재무 조회 승인 후 회수 건' });
+        }
+        for (let i = 0; i < 3; i++)
+            this.entitlementsData.push({ entitlementId: (0, exports.demoId)(800 + i), subscriptionId: (0, exports.demoId)(850 + i), consumerAppEnvironmentId: (0, exports.demoId)(500 + i), apiProductVersionId: (0, exports.demoId)(200 + i), status: i === 2 ? 'REVOKED' : 'ACTIVE', effectiveFrom: stamp, effectiveTo: null, revision: 1, operationScopes: [{ apiOperationId: (0, exports.demoId)(700 + i) }], quotaLimits: [], latestFulfillment: { accessFulfillmentId: (0, exports.demoId)(900 + i), type: i === 2 ? 'DEPROVISION' : 'PROVISION', status: i === 0 ? 'SUCCEEDED' : 'UNKNOWN' }, credentialStatus: i === 0 ? 'ACTIVE' : i === 2 ? 'REVOKED' : 'UNKNOWN', readyToUse: i === 0 });
+    }
+    async wait(signal) { await new Promise((resolve, reject) => { const abort = () => { clearTimeout(timer); reject(new DOMException('취소', 'AbortError')); }; const timer = setTimeout(() => { signal?.removeEventListener('abort', abort); resolve(); }, this.scenario === 'slow' ? 2200 : 140); if (signal?.aborted)
+        abort();
+    else
+        signal?.addEventListener('abort', abort, { once: true }); }); if (this.scenario === 'forbidden')
+        throw new PortalError('ACCESS_DENIED', '시연 시나리오: 권한이 없는 경우의 화면입니다.', 403); if (this.scenario === 'error')
+        throw new PortalError('DEMO_ERROR', '시연 시나리오: 서버 오류 화면입니다.', 503); }
+    copy(v) { return JSON.parse(JSON.stringify(v)); }
+    owned(list, predicate) { const value = list.find(predicate); if (!value)
+        throw new PortalError('NOT_FOUND', '시연 데이터에서 대상을 찾을 수 없습니다.', 404); return value; }
+    once(key, body, fn) { const fingerprint = JSON.stringify(body), prior = this.replay.get(key); if (prior) {
+        if (prior.fingerprint !== fingerprint)
+            throw new PortalError('IDEMPOTENCY_KEY_CONFLICT', '동일 요청 키에 다른 내용입니다.', 409);
+        return this.copy(prior.value);
+    } const result = fn(); this.replay.set(key, { fingerprint, value: this.copy(result) }); return this.copy(result); }
+    async context(signal) { await this.wait(signal); return this.copy(exports.DEMO_CONTEXT); }
+    async catalog(q, signal) { await this.wait(signal); const needle = String(q.q ?? '').toLocaleLowerCase(); const rows = this.productsData.filter(p => p.lifecycleState === 'ACTIVE' && (!q.providerId || p.providerId === q.providerId)).map(p => { const provider = exports.DEMO_PROVIDERS.find(x => x.providerId === p.providerId) ?? null; return { apiProductId: p.apiProductId, productCode: p.productCode, displayName: p.name, description: p.description, resolvedLocale: 'ko-KR', resolutionSource: 'CANONICAL', provider, visibleVersions: this.versionsData.filter(v => v.apiProductId === p.apiProductId && v.lifecycleState === 'RELEASED').map(v => ({ apiProductVersionId: v.apiProductVersionId, versionValue: v.version, catalogPublicationId: (0, exports.demoId)(300 + this.versionsData.indexOf(v)) })), matchedLocaleKeys: ['__canonical__'] }; }).filter(p => [p.displayName, p.productCode, p.description, p.provider?.displayName].join(' ').toLocaleLowerCase().includes(needle)).sort((a, b) => a.displayName.localeCompare(b.displayName, 'ko')); return this.copy(pageOf(this.scenario === 'empty' ? [] : rows, q)); }
+    async products(signal) { await this.wait(signal); return this.copy(this.scenario === 'empty' ? [] : this.productsData); }
+    async product(id, signal) { await this.wait(signal); return this.copy(this.owned(this.productsData, p => p.apiProductId === id)); }
+    async saveProduct(b, id, revision) { await this.wait(); if (!b.productCode.trim() || !b.name.trim())
+        throw new PortalError('VALIDATION_ERROR', '코드와 이름이 필요합니다.', 400); if (id) {
+        const p = this.owned(this.productsData, x => x.apiProductId === id);
+        if (p.revision !== revision)
+            throw new PortalError('CONCURRENT_MODIFICATION', 'Product가 변경되었습니다.', 409);
+        Object.assign(p, { name: b.name, description: b.description, providerId: b.providerId, ownerMembershipId: b.ownerMembershipId, revision: p.revision + 1, updatedAt: stamp });
+        return this.copy(p);
+    } if (this.productsData.some(x => x.productCode === b.productCode.trim().toUpperCase()))
+        throw new PortalError('API_PRODUCT_CODE_CONFLICT', '동일한 Product 코드가 있습니다.', 409); const p = { ...b, apiProductId: M.uuid(), productCode: b.productCode.trim().toUpperCase(), lifecycleState: 'DRAFT', revision: 0, createdAt: stamp, updatedAt: stamp }; this.productsData.push(p); return this.copy(p); }
+    async versions(id, signal) { await this.wait(signal); return this.copy(this.versionsData.filter(v => v.apiProductId === id)); }
+    async createVersion(id, version) { await this.wait(); this.owned(this.productsData, p => p.apiProductId === id); if (this.versionsData.some(v => v.apiProductId === id && v.version === version))
+        throw new PortalError('VERSION_CONFLICT', '동일 버전이 있습니다.', 409); const v = { apiProductVersionId: M.uuid(), apiProductId: id, version, lifecycleState: 'DRAFT', revision: 0 }; this.versionsData.push(v); return this.copy(v); }
+    async components(id, signal) { await this.wait(signal); const v = this.owned(this.versionsData, x => x.apiProductVersionId === id); return v.lifecycleState === 'DRAFT' ? [] : [{ componentId: (0, exports.demoId)(750), apiProductVersionId: id, targetType: 'API_OPERATION', targetId: (0, exports.demoId)(700 + Math.max(0, this.versionsData.indexOf(v))) }]; }
+    async readiness(id, signal) { await this.wait(signal); this.owned(this.versionsData, x => x.apiProductVersionId === id); return { ready: false, blockers: [{ code: 'REQUIRED_CLASSIFICATION_MISSING', message: '분류 정책은 확정된 서버 권위를 확인해야 합니다.' }, { code: 'REQUIRED_ACCESS_POLICY_MISSING', message: '접근정책 기준이 확정되지 않았습니다.' }, { code: 'SOURCE_PROVENANCE_NOT_RECONSTRUCTABLE', message: '복구 가능한 불변 원문 참조의 Release 기준을 확인해야 합니다.' }], warnings: [], snapshotCandidateHash: null }; }
+    async apps(signal) { await this.wait(signal); return this.copy(this.scenario === 'empty' ? [] : this.appsData); }
+    async saveApp(b) { await this.wait(); if (this.appsData.some(x => x.appCode === b.appCode.trim().toUpperCase()))
+        throw new PortalError('APP_CODE_CONFLICT', '동일 앱 코드가 있습니다.', 409); const a = { ...b, consumerAppId: M.uuid(), appCode: b.appCode.trim().toUpperCase(), lifecycleState: 'DRAFT', revision: 0, createdAt: stamp, updatedAt: stamp }; this.appsData.push(a); return this.copy(a); }
+    async activateApp(id, revision) { await this.wait(); const a = this.owned(this.appsData, x => x.consumerAppId === id); if (a.revision !== revision || a.lifecycleState !== 'DRAFT')
+        throw new PortalError('CONSUMER_APP_STATE_INVALID', '현재 상태에서는 활성화할 수 없습니다.', 409); a.lifecycleState = 'ACTIVE'; a.revision++; return this.copy(a); }
+    async environments(id, signal) { await this.wait(signal); return this.copy(this.envs.filter(e => e.consumerAppId === id)); }
+    async createEnvironment(id, type) { await this.wait(); this.owned(this.appsData, a => a.consumerAppId === id); if (!['DEV', 'TEST', 'PROD'].includes(type))
+        throw new PortalError('INVALID_ENVIRONMENT', '지원하는 실행 환경이 아닙니다.', 400); if (this.envs.some(e => e.consumerAppId === id && e.environmentType === type))
+        throw new PortalError('ENVIRONMENT_CONFLICT', '같은 환경이 이미 있습니다.', 409); const e = { consumerAppEnvironmentId: M.uuid(), consumerAppId: id, environmentType: type, revision: 0 }; this.envs.push(e); return this.copy(e); }
+    async request(id, signal) { await this.wait(signal); return this.copy(this.owned(this.requestsData, r => r.subscriptionRequestId === id)); }
+    async createRequest(body, key) { await this.wait(); return this.once(key, body, () => { const env = this.owned(this.envs, e => e.consumerAppEnvironmentId === body.consumerAppEnvironmentId); const app = this.owned(this.appsData, a => a.consumerAppId === env.consumerAppId); if (app.lifecycleState !== 'ACTIVE')
+        throw new PortalError('CONSUMER_APP_STATE_INVALID', 'ACTIVE 애플리케이션만 구독 신청에 사용할 수 있습니다.', 409); if (!body.purpose.trim() || body.requestedApiOperationIds.length === 0)
+        throw new PortalError('VALIDATION_ERROR', '목적과 명시적인 Operation ID가 필요합니다.', 400); const pubIndex = Number(body.catalogPublicationId.slice(-12)) - 300; const version = this.versionsData[pubIndex]; if (!version || version.lifecycleState !== 'RELEASED')
+        throw new PortalError('PUBLICATION_NOT_FOUND', '게시 버전을 선택해 주세요.', 400); if (body.requestedApiOperationIds.some(op => op !== (0, exports.demoId)(700 + pubIndex)))
+        throw new PortalError('SUBSCRIPTION_REQUEST_SCOPE_INVALID', '시연 게시 버전의 명시적인 Operation ID를 사용해 주세요.', 409); const r = { ...body, subscriptionRequestId: M.uuid(), apiProductVersionId: version.apiProductVersionId, requesterMembershipId: (0, exports.demoId)(3), status: 'SUBMITTED', currentRevisionNo: 1, snapshotHash: 'DEMO-SNAPSHOT-NOT-SERVER-HASH', revision: 0, createdAt: stamp, updatedAt: stamp }; this.requestsData.unshift(r); return r; }); }
+    async cancelRequest(id, revision) { await this.wait(); const r = this.owned(this.requestsData, x => x.subscriptionRequestId === id); if (r.revision !== revision || r.status !== 'SUBMITTED')
+        throw new PortalError('STATE_CONFLICT', '현재 상태에서는 취소할 수 없습니다.', 409); r.status = 'CANCELLED'; r.revision++; return this.copy(r); }
+    async entitlements(signal) { await this.wait(signal); return this.copy(this.scenario === 'empty' ? [] : this.entitlementsData); }
+    async importFile(providerId, apiCode, file, key) { await this.wait(); checkFile(file); this.owned(exports.DEMO_PROVIDERS, p => p.providerId === providerId); const bytes = await file.arrayBuffer(); const digest = globalThis.crypto?.subtle ? Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)), b => b.toString(16).padStart(2, '0')).join('') : 'DEMO-HASH-UNAVAILABLE'; return this.once(key, { providerId, apiCode, hash: digest, name: file.name }, () => { const r = { importId: M.uuid(), candidateId: M.uuid(), status: 'SUCCEEDED', apiCode: apiCode.trim().toUpperCase(), version: 'DEMO', sourceContentHash: digest, apiId: M.uuid(), apiVersionId: M.uuid(), failureCode: null, failureSummary: null, idempotentReplay: false }; this.imports.set(r.importId, r); return r; }); }
+    async importResult(id, signal) { await this.wait(signal); const r = this.imports.get(id); if (!r)
+        throw new PortalError('NOT_FOUND', '현재 화면에서 생성된 시연 Import ID를 입력해 주세요.', 404); return this.copy(r); }
+    async summary(signal) { await this.wait(signal); return { tenantId: (0, exports.demoId)(1), asOf: stamp, outboxStatusCounts: { PENDING: 4, PUBLISHED: 0, FAILED: 0 }, integrations: { APPROVAL_ITSM: { operationStatusCounts: { SUCCEEDED: 2, IN_PROGRESS: 1, UNKNOWN: 1 }, issueStatusCounts: { OPEN: 1, RESOLVED: 1 }, enabledConnectorCount: 1, healthStatus: 'NOT_MEASURED' }, GATEWAY_IAM: { operationStatusCounts: { SUCCEEDED: 2, IN_PROGRESS: 1, UNKNOWN: 2 }, issueStatusCounts: { OPEN: 2, RESOLVED: 0 }, enabledConnectorCount: 1, healthStatus: 'NOT_MEASURED' } }, search: { documentCount: 9, visibilityCount: 10, observedOpenFailureCount: 1 }, unavailableMetrics: { usage: 'NOT_MEASURED', latency: 'NOT_MEASURED', deliveryRate: 'NOT_MEASURED', liveHealth: 'NOT_MEASURED' }, evidenceScope: 'DEMO_FIXTURE; NOT_EXTERNAL_RUNTIME_EVIDENCE' }; }
+    async rows(kind, q, signal) {
+        await this.wait(signal);
+        let rows = [];
+        const gateway = q.type === 'GATEWAY_IAM';
+        if (kind === 'operations')
+            rows = Array.from({ length: gateway ? 5 : 4 }, (_, i) => ({ id: (0, exports.demoId)(1000 + i + (gateway ? 10 : 0)), operationType: gateway ? (i === 3 ? 'GATEWAY_DEPROVISION' : 'GATEWAY_PROVISION') : 'APPROVAL_CASE_CREATE', aggregateType: gateway ? 'ACCESS_FULFILLMENT' : 'SUBSCRIPTION_REQUEST', aggregateId: (0, exports.demoId)(gateway ? [900, 901, 903, 902, 904][i] : 600 + i), connectorInstanceId: (0, exports.demoId)(gateway ? 51 : 50), status: i === 1 || (gateway && i === 3) ? 'UNKNOWN' : i === 2 ? 'IN_PROGRESS' : 'SUCCEEDED', attemptCount: 1, safeErrorCode: i === 1 ? 'UNKNOWN_RESULT' : null, createdAt: `2026-09-22T0${8 - i}:10:00Z`, lastAttemptAt: stamp }));
+        if (kind === 'issues')
+            rows = [{ id: (0, exports.demoId)(1100), integrationOperationId: (0, exports.demoId)(gateway ? 1011 : 1001), issueType: gateway ? 'GATEWAY_PROVISION_UNKNOWN' : 'APPROVAL_CREATE_UNKNOWN', status: 'OPEN', safeDetailCode: 'UNKNOWN_RESULT', openedAt: stamp, lastCheckedAt: stamp, resolvedAt: null, rowVersion: 1 }];
+        if (kind === 'issues' && gateway)
+            rows.push({ ...rows[0], id: (0, exports.demoId)(1101), integrationOperationId: (0, exports.demoId)(1013), issueType: 'GATEWAY_DEPROVISION_UNKNOWN' });
+        if (kind === 'issues' && !gateway)
+            rows.push({ ...rows[0], id: (0, exports.demoId)(1102), integrationOperationId: (0, exports.demoId)(1003), status: 'RESOLVED', resolvedAt: stamp });
+        if (kind === 'outbox')
+            rows = Array.from({ length: 4 }, (_, i) => ({ id: (0, exports.demoId)(1200 + i), eventId: (0, exports.demoId)(1250 + i), eventType: ['SubscriptionRequested', 'EntitlementGranted', 'GatewayProvisioningCompleted', 'ProductVersionReleased'][i], aggregateType: 'DEMO_AGGREGATE', aggregateId: (0, exports.demoId)(600 + i), status: 'PENDING', publishAttempts: 0, correlationId: 'demo-event-' + i, createdAt: stamp }));
+        if (kind === 'connectors')
+            rows = [{ id: (0, exports.demoId)(gateway ? 51 : 50), integrationProfileId: (0, exports.demoId)(gateway ? 61 : 60), connectorCode: gateway ? 'DEMO-GATEWAY' : 'DEMO-ITSM', adapterCode: gateway ? 'MOCK_GATEWAY' : 'MOCK_APPROVAL', authorityCode: gateway ? 'MOCK_GATEWAY' : 'MOCK_APPROVAL', enabled: true, healthStatus: 'NOT_MEASURED' }];
+        if (kind === 'failures')
+            rows = [{ id: (0, exports.demoId)(1300), apiProductId: (0, exports.demoId)(100), status: 'OPEN', safeErrorCode: 'SEARCH_PROJECTION_REFRESH_FAILED', observedAt: stamp, lastCheckedAt: stamp, resolvedAt: null, rowVersion: 2 }];
+        if (kind === 'audit')
+            rows = Array.from({ length: 14 }, (_, i) => ({ id: (0, exports.demoId)(1400 + i), occurredAt: `2026-09-22T${String(9 - Math.floor(i / 3)).padStart(2, '0')}:${String(55 - i % 3 * 11).padStart(2, '0')}:00Z`, actorPrincipalId: i % 3 === 0 ? 'demo.operator' : 'demo.provider', action: ['API_PRODUCT_CREATED', 'API_IMPORT_SUCCEEDED', 'SUBSCRIPTION_REQUESTED', 'GATEWAY_INTEGRATION_UNKNOWN', 'OPERATIONS_RECOVERY_REQUESTED', 'ACCESS_DENIED'][i % 6], resourceType: i % 2 ? 'INTEGRATION_OPERATION' : 'API_PRODUCT', resourceId: (0, exports.demoId)(100 + i), outcome: i % 6 === 5 ? 'DENIED' : 'SUCCESS', reasonCode: i % 6 === 5 ? 'ACCESS_DENIED' : null, correlationId: 'demo-correlation-' + String(i + 1).padStart(3, '0') }));
+        for (const key of ['status', 'action', 'outcome', 'resourceType', 'resourceId', 'correlationId'])
+            if (q[key])
+                rows = rows.filter(r => r[key] === q[key]);
+        const dateKey = kind === 'audit' ? 'occurredAt' : kind === 'issues' ? 'openedAt' : kind === 'failures' ? 'lastCheckedAt' : 'createdAt';
+        if (q.from)
+            rows = rows.filter(r => typeof r[dateKey] === 'string' && String(r[dateKey]) >= String(q.from));
+        if (q.to)
+            rows = rows.filter(r => typeof r[dateKey] === 'string' && String(r[dateKey]) < String(q.to));
+        if (q.order === 'OLDEST')
+            rows.reverse();
+        return this.copy(pageOf(this.scenario === 'empty' ? [] : rows, q));
+    }
+    async recover(body, key) {
+        await this.wait();
+        validateRecovery(body);
+        return this.once(key, body, () => {
+            if (body.actionType === 'GATEWAY_STATUS_RECONCILE') {
+                const e = this.owned(this.entitlementsData, x => x.latestFulfillment?.accessFulfillmentId === body.targetId);
+                if (!['UNKNOWN', 'FAILED'].includes(e.latestFulfillment?.status ?? ''))
+                    throw new PortalError('INTEGRATION_OPERATION_STATE_INVALID', 'UNKNOWN/FAILED Fulfillment만 재조회할 수 있습니다.', 409);
+            }
+            if (body.actionType === 'SEARCH_PRODUCT_REINDEX')
+                this.owned(this.productsData, p => p.apiProductId === body.targetId);
+            if (body.actionType === 'SEARCH_TENANT_REBUILD' && body.targetId !== exports.DEMO_CONTEXT.tenantId)
+                throw new PortalError('TARGET_NOT_FOUND', '현재 Tenant만 대상으로 지정할 수 있습니다.', 404);
+            if (body.actionType === 'APPROVAL_STATUS_RECONCILE' && body.targetId !== (0, exports.demoId)(950))
+                throw new PortalError('APPROVAL_REFERENCE_NOT_FOUND', '시연 ApprovalReference ID는 00000000-0000-4000-8000-000000000950입니다.', 404);
+            const targetTypes = { GATEWAY_STATUS_RECONCILE: 'ACCESS_FULFILLMENT', APPROVAL_STATUS_RECONCILE: 'APPROVAL_REFERENCE', SEARCH_PRODUCT_REINDEX: 'API_PRODUCT', SEARCH_TENANT_REBUILD: 'TENANT' };
+            const r = { recoveryActionId: M.uuid(), actionType: body.actionType, targetType: targetTypes[body.actionType], targetId: body.targetId, actionStatus: 'SUCCEEDED', targetStatus: body.actionType === 'GATEWAY_STATUS_RECONCILE' ? 'UNKNOWN' : body.actionType === 'APPROVAL_STATUS_RECONCILE' ? 'PENDING' : 'REINDEXED', integrationOperationId: null, safeResultCode: 'DEMO_HANDLER_ONLY', correlationId: 'demo-recovery', requestedBy: 'demo.operator', requestedAt: stamp, startedAt: stamp, completedAt: stamp, rowVersion: 2 };
+            this.recoveries.set(String(r.recoveryActionId), r);
+            return r;
+        });
+    }
+    async recovery(id, signal) { await this.wait(signal); const r = this.recoveries.get(id); if (!r)
+        throw new PortalError('NOT_FOUND', '시연 복구 실행기록을 찾을 수 없습니다.', 404); return this.copy(r); }
+    async subscriptions(signal) { await this.wait(signal); return this.entitlementsData.map((e, i) => ({ subscriptionId: e.subscriptionId, sourceSubscriptionRequestId: (0, exports.demoId)(i === 0 ? 600 : 609 + i), sourceRequestRevisionNo: 1, consumerAppEnvironmentId: e.consumerAppEnvironmentId, apiProductVersionId: e.apiProductVersionId, status: i === 2 ? 'REVOKED' : 'ACTIVE', effectiveFrom: stamp, effectiveTo: null, revision: 1 })); }
+}
+exports.DemoRepository = DemoRepository;
+
+},
+"dom":function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.labels = void 0;
+exports.el = el;
+exports.append = append;
+exports.button = button;
+exports.icon = icon;
+exports.input = input;
+exports.select = select;
+exports.textarea = textarea;
+exports.field = field;
+exports.badge = badge;
+exports.notice = notice;
+exports.empty = empty;
+exports.loading = loading;
+exports.table = table;
+exports.date = date;
+exports.brief = brief;
+exports.kv = kv;
+exports.copyButton = copyButton;
+exports.sectionTitle = sectionTitle;
+function el(tag, cls = '', ...children) { const node = document.createElement(tag); if (cls)
+    node.className = cls; append(node, ...children); return node; }
+function append(node, ...children) { for (const child of children)
+    if (child !== null && child !== undefined && child !== false)
+        node.appendChild(child instanceof Node ? child : document.createTextNode(String(child))); }
+function button(label, fn, cls = 'btn', iconName) { const b = el('button', cls, iconName ? icon(iconName) : null, label); b.type = 'button'; b.addEventListener('click', fn); return b; }
+function icon(name, cls = 'icon') {
+    const paths = {
+        home: ['M3 10 12 3l9 7', 'M5 9v12h5v-7h4v7h5V9'], grid: ['M3 3h7v7H3z', 'M14 3h7v7h-7z', 'M3 14h7v7H3z', 'M14 14h7v7h-7z'],
+        box: ['m3 7 9-4 9 4-9 4-9-4Z', 'M3 7v10l9 4 9-4V7', 'M12 11v10'], apps: ['M4 4h6v6H4z', 'M14 4h6v6h-6z', 'M4 14h6v6H4z', 'M14 14h6v6h-6z'],
+        upload: ['M12 16V3', 'm7 8 5-5 5 5', 'M4 15v6h16v-6'], download: ['M12 3v13', 'm7 11 5 5 5-5', 'M4 17v4h16v-4'],
+        document: ['M6 3h9l4 4v14H6z', 'M14 3v5h5', 'M9 12h7M9 16h7'], shield: ['m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z', 'm8 12 3 3 5-6'],
+        activity: ['M3 12h4l3-8 4 16 3-8h4'], clock: ['M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18', 'M12 7v5l3 2'],
+        settings: ['M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8', 'M9 3h6l1 3 3 1 2 5-2 5-3 1-1 3H9l-1-3-3-1-2-5 2-5 3-1 1-3Z'],
+        search: ['M10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14', 'm15 15 6 6'], arrow: ['M4 12h16', 'm14 6 6 6-6 6'], chevron: ['m9 5 7 7-7 7'], down: ['m6 9 6 6 6-6'],
+        check: ['m4 12 5 5L20 6'], close: ['M5 5l14 14', 'M19 5 5 19'], plus: ['M12 4v16', 'M4 12h16'], refresh: ['M20 10a8 8 0 1 0-1 7', 'M20 3v7h-7'],
+        star: ['m12 3 3 6 6 1-4.5 4.5 1 6.5-5.5-3-5.5 3 1-6.5L3 10l6-1 3-6Z'], list: ['M8 5h13M8 12h13M8 19h13', 'M3 5h1M3 12h1M3 19h1'],
+        link: ['M9 15 15 9', 'M7 14 5 16a4 4 0 0 0 6 5l3-3', 'M10 6l3-3a4 4 0 0 1 6 6l-2 2'], info: ['M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18', 'M12 11v6M12 7v1'],
+        bell: ['M5 16V9a7 7 0 0 1 14 0v7l2 2H3l2-2Z', 'M9 21h6'], user: ['M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8', 'M4 21v-3a8 8 0 0 1 16 0v3'],
+        lock: ['M6 10h12v11H6z', 'M8 10V6a4 4 0 0 1 8 0v4'], code: ['m8 6-6 6 6 6', 'm16 6 6 6-6 6', 'm14 3-4 18'], copy: ['M8 8h12v13H8z', 'M16 8V3H3v13h5'],
+        globe: ['M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18', 'M3 12h18', 'M12 3c6 6 6 12 0 18-6-6-6-12 0-18'], alert: ['M12 3 2 21h20L12 3Z', 'M12 9v5M12 17v1'], filter: ['M3 4h18l-7 8v7l-4 2v-9L3 4Z'], server: ['M3 3h18v7H3zM3 14h18v7H3z', 'M6 6h1M6 17h1M10 6h8M10 17h8']
+    };
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('class', cls);
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.65');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    for (const d of paths[name] ?? paths.box) {
+        const path = document.createElementNS(svg.namespaceURI, 'path');
+        path.setAttribute('d', d);
+        svg.append(path);
+    }
+    return svg;
+}
+let seq = 0;
+function input(name, placeholder = '', value = '', type = 'text', max = 200) { const x = el('input', 'input'); x.name = name; x.type = type; x.value = value; x.placeholder = placeholder; x.maxLength = max; x.autocomplete = 'off'; return x; }
+function select(name, options, value = '') { const s = el('select', 'input'); s.name = name; for (const [v, label] of options) {
+    const o = el('option', '', label);
+    o.value = v;
+    s.append(o);
+} s.value = value; return s; }
+function textarea(name, placeholder = '', value = '', max = 4000) { const t = el('textarea', 'input'); t.name = name; t.placeholder = placeholder; t.value = value; t.maxLength = max; t.rows = 3; return t; }
+function field(label, node, required = false, hint = '') { const id = 'field-' + (++seq); node.id = id; node.required = required; node.setAttribute('aria-label', label); const l = el('label', 'field-label', required ? el('span', 'required', '*') : null, label); l.htmlFor = id; const wrap = el('div', 'field', l, node); if (hint) {
+    const h = el('small', 'field-hint', hint);
+    h.id = id + '-hint';
+    node.setAttribute('aria-describedby', h.id);
+    wrap.append(h);
+} return wrap; }
+exports.labels = { ACTIVE: '활성', DRAFT: '초안', RELEASED: '배포됨', VALIDATING: '검증 중', APPROVED: '승인됨', COMPLETED: '완료', SUBMITTED: '신청됨', PENDING_APPROVAL: '승인 대기', PENDING: '대기', SUCCEEDED: '처리 완료', FAILED: '실패', UNKNOWN: '결과 확인 필요', IN_PROGRESS: '처리 중', RECONCILING: '대사 중', PROCESSING: '처리 중', REVOKED: '회수됨', SUSPENDED: '중지', RETIRED: '종료', CANCELLED: '취소됨', OPEN: '미해결', RESOLVED: '해결', PUBLISHED: '전달 완료', SUCCESS: '성공', DENIED: '권한 거절', REJECTED: '반려', NEEDS_INFORMATION: '보완 필요', NOT_MEASURED: '미측정', NOT_IMPLEMENTED: '미구현', DEV: '개발', TEST: '테스트', PROD: '운영' };
+function badge(status, custom) { const good = ['ACTIVE', 'RELEASED', 'APPROVED', 'COMPLETED', 'SUCCEEDED', 'SUCCESS', 'RESOLVED']; const warn = ['UNKNOWN', 'PENDING', 'PENDING_APPROVAL', 'OPEN', 'NEEDS_INFORMATION']; const bad = ['FAILED', 'DENIED', 'REVOKED', 'REJECTED']; const tone = good.includes(status) ? 'green' : warn.includes(status) ? 'amber' : bad.includes(status) ? 'red' : ['DRAFT', 'CANCELLED', 'RETIRED', 'NOT_MEASURED', 'SUSPENDED'].includes(status) ? 'gray' : 'blue'; const b = el('span', 'badge ' + tone, el('span', 'status-dot'), custom ?? exports.labels[status] ?? status); b.title = status; return b; }
+function notice(text, tone = 'info') { return el('div', 'notice ' + tone, icon(tone === 'warn' ? 'alert' : 'info'), el('span', '', text)); }
+function empty(title, desc, action) { return el('div', 'empty', el('div', 'empty-icon', icon('search')), el('h3', '', title), el('p', '', desc), action); }
+function loading() { const n = el('div', 'loading', el('span', 'spinner'), '화면 데이터를 불러오는 중입니다.'); n.setAttribute('role', 'status'); return n; }
+function table(columns, rows, caption) { const t = el('table', 'data-table'); const c = el('caption', 'sr-only', caption); const head = el('thead', '', el('tr', '', ...columns.map(x => { const th = el('th', x.className ?? '', x.label); th.scope = 'col'; return th; }))); const body = el('tbody'); for (const r of rows)
+    body.append(el('tr', '', ...columns.map(col => el('td', col.className ?? '', col.cell(r))))); t.append(c, head, body); return el('div', 'table-scroll', t); }
+function date(v) { if (!v)
+    return '—'; const d = new Date(v); return Number.isNaN(d.getTime()) ? '—' : new Intl.DateTimeFormat('ko-KR', { month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Seoul' }).format(d); }
+function brief(v) { const n = el('span', 'mono', v ?? '—'); n.title = v ?? ''; return n; }
+function kv(items) { const dl = el('dl', 'kv'); for (const [k, v] of items)
+    dl.append(el('dt', '', k), el('dd', '', v)); return dl; }
+function copyButton(value) { return button('복사', () => { if (navigator.clipboard) {
+    void navigator.clipboard.writeText(value).catch(() => { });
+}
+else {
+    const t = el('textarea', 'copy-temp');
+    t.value = value;
+    document.body.append(t);
+    t.select();
+    document.execCommand('copy');
+    t.remove();
+} }, 'btn tiny', 'copy'); }
+function sectionTitle(title, action) { return el('div', 'section-heading', el('h2', '', title), action); }
+
+},
+"models":function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FIELDS = exports.NAV = exports.RECOVERY_TYPES = void 0;
+exports.obj = obj;
+exports.text = text;
+exports.num = num;
+exports.bool = bool;
+exports.nullable = nullable;
+exports.array = array;
+exports.strings = strings;
+exports.parsePage = parsePage;
+exports.parseContext = parseContext;
+exports.parseCatalog = parseCatalog;
+exports.parseProduct = parseProduct;
+exports.parseVersion = parseVersion;
+exports.parseComponent = parseComponent;
+exports.parseApp = parseApp;
+exports.parseEnvironment = parseEnvironment;
+exports.parseRequest = parseRequest;
+exports.parseEntitlement = parseEntitlement;
+exports.parseImport = parseImport;
+exports.parseReadiness = parseReadiness;
+exports.parseFields = parseFields;
+exports.safeRow = safeRow;
+exports.parseSummary = parseSummary;
+exports.scalar = scalar;
+exports.uuid = uuid;
+exports.RECOVERY_TYPES = { APPROVAL_STATUS_RECONCILE: '승인 상태 재조회', GATEWAY_STATUS_RECONCILE: 'Gateway 상태 재조회', SEARCH_PRODUCT_REINDEX: 'Product 재색인', SEARCH_TENANT_REBUILD: '현재 Tenant 전체 재색인' };
+exports.NAV = [
+    { id: 'home', title: '워크스페이스', group: '워크스페이스', icon: 'home', subtitle: 'API를 발견하고, 연결하고, 안전하게 운영하세요.' },
+    { id: 'catalog', title: 'API 카탈로그', group: 'API 탐색', icon: 'grid', subtitle: '현재 Tenant에 공개된 API Product를 찾아보세요.' },
+    { id: 'products', title: 'Product 관리', group: '제공자 업무', icon: 'box', subtitle: 'API Product와 버전을 관리하고 게시 준비 상태를 확인합니다.' },
+    { id: 'import', title: 'OpenAPI Import', group: '제공자 업무', icon: 'upload', subtitle: 'OpenAPI 문서를 가져와 기술 API의 DRAFT를 구성합니다.' },
+    { id: 'apps', title: '내 애플리케이션', group: '이용자 업무', icon: 'apps', subtitle: 'API를 사용하는 앱과 실행 환경을 관리합니다.' },
+    { id: 'requests', title: '구독 신청 · 현황', group: '이용자 업무', icon: 'document', subtitle: '특정 게시 버전에 대한 구독을 신청하고 처리 상태를 확인합니다.' },
+    { id: 'entitlements', title: '접근권한 · 사용 준비', group: '이용자 업무', icon: 'shield', subtitle: '승인, 권한, Gateway 설정과 사용 준비 상태를 구분해 확인합니다.' },
+    { id: 'operations', title: '연계 운영 · 복구', group: '운영 관리', icon: 'activity', subtitle: '승인·Gateway 연계 상태를 확인하고 통제된 재조회를 수행합니다.' },
+    { id: 'audit', title: '감사 이력', group: '운영 관리', icon: 'clock', subtitle: '현재 Tenant의 업무 처리 이력을 조회합니다.' },
+    { id: 'settings', title: '연결 · 실행 안내', group: '운영 관리', icon: 'settings', subtitle: '화면 미리보기와 실제 API 연결을 명확하게 구분합니다.' },
+];
+function obj(v) { if (!v || typeof v !== 'object' || Array.isArray(v))
+    throw new Error('응답 객체 형식이 올바르지 않습니다.'); return v; }
+function text(v) { if (typeof v !== 'string' || v.length > 100000)
+    throw new Error('응답 문자열 형식이 올바르지 않습니다.'); return v; }
+function num(v) { if (typeof v !== 'number' || !Number.isFinite(v))
+    throw new Error('응답 숫자 형식이 올바르지 않습니다.'); return v; }
+function bool(v) { if (typeof v !== 'boolean')
+    throw new Error('응답 상태 형식이 올바르지 않습니다.'); return v; }
+function nullable(v, parse) { return v === null || v === undefined ? null : parse(v); }
+function array(v, parse) { if (!Array.isArray(v) || v.length > 50000)
+    throw new Error('응답 목록 형식이 올바르지 않습니다.'); return v.map(parse); }
+function strings(v) { return array(v, text); }
+function parsePage(v, parse) { const o = obj(v); const page = num(o.page), size = num(o.size), totalElements = num(o.totalElements); if (![page, size, totalElements].every(Number.isSafeInteger) || page < 0 || size < 1 || size > 100 || totalElements < 0)
+    throw new Error('응답 페이지 범위 오류'); return { items: array(o.items, parse), page, size, totalElements, hasNext: o.hasNext === undefined ? (page + 1) * size < totalElements : bool(o.hasNext), asOf: nullable(o.asOf, text) }; }
+function parseContext(v) { const o = obj(v); return { tenantId: text(o.tenantId), tenantCode: text(o.tenantCode), organizationId: nullable(o.organizationId, text), principalId: text(o.principalId), membershipId: text(o.membershipId), roles: strings(o.roles), locale: text(o.locale) }; }
+function parseCatalog(v) { const o = obj(v); return { apiProductId: text(o.apiProductId), productCode: text(o.productCode), displayName: text(o.displayName), description: nullable(o.description, text), resolvedLocale: nullable(o.resolvedLocale, text), resolutionSource: text(o.resolutionSource), provider: nullable(o.provider, x => { const p = obj(x); return { providerId: text(p.providerId), providerCode: text(p.providerCode), displayName: text(p.displayName) }; }), visibleVersions: array(o.visibleVersions, x => { const p = obj(x); return { apiProductVersionId: text(p.apiProductVersionId), versionValue: text(p.versionValue), catalogPublicationId: text(p.catalogPublicationId) }; }), matchedLocaleKeys: strings(o.matchedLocaleKeys) }; }
+function parseProduct(v) { const o = obj(v); return { apiProductId: text(o.apiProductId), productCode: text(o.productCode), name: text(o.name), description: nullable(o.description, text), providerId: nullable(o.providerId, text), ownerMembershipId: nullable(o.ownerMembershipId, text), lifecycleState: text(o.lifecycleState), revision: num(o.revision), createdAt: text(o.createdAt), updatedAt: text(o.updatedAt) }; }
+function parseVersion(v) { const o = obj(v); return { apiProductVersionId: text(o.apiProductVersionId), apiProductId: text(o.apiProductId), version: text(o.version), lifecycleState: text(o.lifecycleState), revision: num(o.revision) }; }
+function parseComponent(v) { const o = obj(v); return { componentId: text(o.componentId), apiProductVersionId: text(o.apiProductVersionId), targetType: text(o.targetType), targetId: text(o.targetId) }; }
+function parseApp(v) { const o = obj(v); return { consumerAppId: text(o.consumerAppId), appCode: text(o.appCode), name: text(o.name), description: nullable(o.description, text), ownerMembershipId: text(o.ownerMembershipId), organizationId: nullable(o.organizationId, text), lifecycleState: text(o.lifecycleState), revision: num(o.revision), createdAt: text(o.createdAt), updatedAt: text(o.updatedAt) }; }
+function parseEnvironment(v) { const o = obj(v); return { consumerAppEnvironmentId: text(o.consumerAppEnvironmentId), consumerAppId: text(o.consumerAppId), environmentType: text(o.environmentType), revision: num(o.revision) }; }
+function parseRequest(v) { const o = obj(v); return { subscriptionRequestId: text(o.subscriptionRequestId), consumerAppEnvironmentId: text(o.consumerAppEnvironmentId), catalogPublicationId: text(o.catalogPublicationId), apiProductVersionId: text(o.apiProductVersionId), requesterMembershipId: text(o.requesterMembershipId), status: text(o.status), currentRevisionNo: num(o.currentRevisionNo), purpose: text(o.purpose), expectedCallVolume: nullable(o.expectedCallVolume, text), snapshotHash: text(o.snapshotHash), requestedApiOperationIds: strings(o.requestedApiOperationIds), revision: num(o.revision), createdAt: text(o.createdAt), updatedAt: text(o.updatedAt) }; }
+function parseEntitlement(v) { const o = obj(v); return { entitlementId: text(o.entitlementId), subscriptionId: text(o.subscriptionId), consumerAppEnvironmentId: text(o.consumerAppEnvironmentId), apiProductVersionId: text(o.apiProductVersionId), status: text(o.status), effectiveFrom: nullable(o.effectiveFrom, text), effectiveTo: nullable(o.effectiveTo, text), revision: num(o.revision), operationScopes: array(o.operationScopes, x => ({ apiOperationId: text(obj(x).apiOperationId) })), quotaLimits: array(o.quotaLimits, x => parseFields(x, { metricCode: 's', limitValue: 'n', windowSeconds: 'n', unitCode: 's' })), latestFulfillment: nullable(o.latestFulfillment, x => { const p = obj(x); return { accessFulfillmentId: text(p.accessFulfillmentId), type: text(p.type), status: text(p.status) }; }), credentialStatus: nullable(o.credentialStatus, text), readyToUse: bool(o.readyToUse) }; }
+function parseImport(v) { const o = obj(v); return { importId: text(o.importId), candidateId: text(o.candidateId), status: text(o.status), apiCode: text(o.apiCode), version: nullable(o.version, text), sourceContentHash: text(o.sourceContentHash), apiId: nullable(o.apiId, text), apiVersionId: nullable(o.apiVersionId, text), failureCode: nullable(o.failureCode, text), failureSummary: nullable(o.failureSummary, text), idempotentReplay: bool(o.idempotentReplay) }; }
+function parseReadiness(v) { const o = obj(v), item = (x) => ({ code: text(obj(x).code), message: text(obj(x).message) }); return { ready: bool(o.ready), blockers: array(o.blockers, item), warnings: array(o.warnings, item), snapshotCandidateHash: nullable(o.snapshotCandidateHash, text) }; }
+function parseFields(v, fields) { const o = obj(v), r = {}; for (const [k, t] of Object.entries(fields)) {
+    r[k] = t === 's' ? text(o[k]) : t === 'n' ? num(o[k]) : t === 'b' ? bool(o[k]) : t === 's?' ? nullable(o[k], text) : nullable(o[k], num);
+} return r; }
+exports.FIELDS = {
+    operations: { id: 's', operationType: 's', aggregateType: 's', aggregateId: 's', connectorInstanceId: 's', status: 's', attemptCount: 'n', safeErrorCode: 's?', createdAt: 's', lastAttemptAt: 's?' },
+    issues: { id: 's', integrationOperationId: 's', issueType: 's', status: 's', safeDetailCode: 's?', openedAt: 's', lastCheckedAt: 's?', resolvedAt: 's?', rowVersion: 'n' },
+    outbox: { id: 's', eventId: 's', eventType: 's', aggregateType: 's', aggregateId: 's', status: 's', publishAttempts: 'n', correlationId: 's', createdAt: 's' },
+    connectors: { id: 's', integrationProfileId: 's', connectorCode: 's', adapterCode: 's', authorityCode: 's', enabled: 'b', healthStatus: 's' },
+    failures: { id: 's', apiProductId: 's', status: 's', safeErrorCode: 's?', observedAt: 's', lastCheckedAt: 's?', resolvedAt: 's?', rowVersion: 'n' },
+    audit: { id: 's', occurredAt: 's', actorPrincipalId: 's', action: 's', resourceType: 's', resourceId: 's', outcome: 's', reasonCode: 's?', correlationId: 's' },
+    recovery: { recoveryActionId: 's', actionType: 's', targetType: 's', targetId: 's', actionStatus: 's', targetStatus: 's?', integrationOperationId: 's?', safeResultCode: 's?', correlationId: 's', requestedBy: 's', requestedAt: 's', startedAt: 's?', completedAt: 's?', rowVersion: 'n' },
+    subscriptions: { subscriptionId: 's', sourceSubscriptionRequestId: 's', sourceRequestRevisionNo: 'n', consumerAppEnvironmentId: 's', apiProductVersionId: 's', status: 's', effectiveFrom: 's?', effectiveTo: 's?', revision: 'n' },
+};
+function safeRow(v, kind) { if (!exports.FIELDS[kind])
+    throw new Error('지원하지 않는 응답 계약'); return parseFields(v, exports.FIELDS[kind]); }
+function numbers(v) { return Object.fromEntries(Object.entries(obj(v)).map(([k, n]) => [k, num(n)])); }
+function parseSummary(v) { const o = obj(v); return { tenantId: text(o.tenantId), asOf: text(o.asOf), outboxStatusCounts: numbers(o.outboxStatusCounts), integrations: Object.fromEntries(Object.entries(obj(o.integrations)).map(([k, v]) => { const p = obj(v); return [k, { operationStatusCounts: numbers(p.operationStatusCounts), issueStatusCounts: numbers(p.issueStatusCounts), enabledConnectorCount: num(p.enabledConnectorCount), healthStatus: text(p.healthStatus) }]; })), search: nullable(o.search, v => { const p = obj(v); return { documentCount: num(p.documentCount), visibilityCount: num(p.visibilityCount), observedOpenFailureCount: num(p.observedOpenFailureCount) }; }), unavailableMetrics: Object.fromEntries(Object.entries(obj(o.unavailableMetrics)).map(([k, v]) => [k, text(v)])), evidenceScope: text(o.evidenceScope) }; }
+function scalar(v) { return v === null || v === undefined ? '—' : typeof v === 'object' ? '—' : String(v); }
+function uuid() { if (typeof globalThis.crypto?.randomUUID === 'function')
+    return crypto.randomUUID(); if (!globalThis.crypto?.getRandomValues)
+    throw new Error('안전한 요청 키를 생성할 수 없습니다.'); const b = crypto.getRandomValues(new Uint8Array(16)); b[6] = (b[6] & 15) | 64; b[8] = (b[8] & 63) | 128; const s = Array.from(b, x => x.toString(16).padStart(2, '0')).join(''); return [s.slice(0, 8), s.slice(8, 12), s.slice(12, 16), s.slice(16, 20), s.slice(20)].join('-'); }
+
+},
+"portal":function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.mountPortal = mountPortal;
+const M = require("./models");
+const data_1 = require("./data");
+const dom_1 = require("./dom");
+const appVersion = 'UI01 · v1.6.0';
+const queryDefaults = () => ({ page: 0, size: 6, q: '', locale: 'ko-KR', providerId: '' });
+/** One dependency-free view runtime, hosted by React or by the standalone preview. */
+function mountPortal(root) { const app = new Portal(root); app.mount(); return () => app.dispose(); }
+class Portal {
+    root;
+    repo = new data_1.DemoRepository();
+    context = { ...data_1.DEMO_CONTEXT };
+    page = 'home';
+    main = (0, dom_1.el)('main', 'main-content');
+    side = (0, dom_1.el)('nav', 'side-nav');
+    controller = new AbortController();
+    slots = new WeakMap();
+    epoch = 0;
+    activeDialog = null;
+    disposed = false;
+    favorites = new Set();
+    catalogQuery = queryDefaults();
+    catalogLayout = 'grid';
+    productQuery = '';
+    productState = '';
+    opsKind = 'operations';
+    opsType = 'GATEWAY_IAM';
+    opsQuery = { page: 0, size: 10, status: '', order: 'NEWEST' };
+    auditQuery = { page: 0, size: 10, order: 'NEWEST' };
+    sessionRequests = [];
+    connectionError = '';
+    hashHandler = () => { const key = location.hash.slice(1).split('/')[0]; if (M.NAV.some(x => x.id === key)) {
+        this.page = key;
+        this.paint();
+    } };
+    constructor(root) {
+        this.root = root;
+    }
+    mount() { window.addEventListener('hashchange', this.hashHandler); const key = location.hash.slice(1); if (M.NAV.some(x => x.id === key))
+        this.page = key; this.root.classList.add('ustra-portal'); this.paint(); }
+    dispose() { this.disposed = true; this.controller.abort(); this.activeDialog?.close(); window.removeEventListener('hashchange', this.hashHandler); if (this.repo instanceof data_1.LiveRepository)
+        this.repo.clear(); this.root.replaceChildren(); }
+    go(page) { if (location.hash === '#' + page) {
+        this.page = page;
+        this.paint();
+    }
+    else
+        location.hash = page; }
+    isDemo() { return this.repo.mode === 'demo'; }
+    paint() {
+        this.controller.abort();
+        this.controller = new AbortController();
+        this.epoch++;
+        this.activeDialog?.close();
+        const nav = M.NAV.find(n => n.id === this.page);
+        const logo = (0, dom_1.button)('', () => this.go('home'), 'logo');
+        logo.setAttribute('aria-label', 'U.STRA API Platform 홈');
+        logo.append((0, dom_1.el)('span', 'logo-mark', 'U.', (0, dom_1.el)('span', '', 'STRA')), (0, dom_1.el)('span', 'logo-product', 'API Platform'));
+        const topLinks = (0, dom_1.el)('nav', 'top-nav');
+        topLinks.setAttribute('aria-label', '주요 업무');
+        const topItems = [['홈', 'home', ['home']], ['API 탐색', 'catalog', ['catalog']], ['제공자', 'products', ['products', 'import']], ['이용자', 'apps', ['apps', 'requests', 'entitlements']], ['운영', 'operations', ['operations', 'audit']], ['관리', 'settings', ['settings']]];
+        for (const [title, page, ids] of topItems) {
+            const b = (0, dom_1.button)(title, () => this.go(page), 'top-link' + (ids.includes(this.page) ? ' selected' : ''));
+            if (ids.includes(this.page))
+                b.setAttribute('aria-current', 'page');
+            topLinks.append(b);
+        }
+        const mode = (0, dom_1.button)(this.isDemo() ? '예시 데이터' : '서버 연결 모드', () => this.go('settings'), 'mode-pill ' + (this.isDemo() ? 'demo' : 'live'), 'server');
+        const tools = (0, dom_1.el)('div', 'header-tools', mode, (0, dom_1.button)('화면 안내', () => this.help(), 'icon-only', 'info'), (0, dom_1.el)('span', 'header-avatar', 'U'));
+        const header = (0, dom_1.el)('header', 'topbar', logo, topLinks, tools);
+        const sideHeader = (0, dom_1.el)('div', 'side-card profile-card', (0, dom_1.el)('div', 'avatar', 'U'), (0, dom_1.el)('div', 'profile-text', (0, dom_1.el)('strong', '', this.isDemo() ? '데모 운영자' : this.context?.principalId ?? '인증 대기'), (0, dom_1.el)('span', '', this.isDemo() ? 'U.STRA 데모 워크스페이스' : this.context?.tenantCode ?? '서버 문맥 확인 필요')));
+        const menuSearch = (0, dom_1.input)('menuSearch', '메뉴 검색');
+        menuSearch.setAttribute('aria-label', '메뉴 검색');
+        menuSearch.addEventListener('input', () => this.paintMenu(menuSearch.value));
+        const searchWrap = (0, dom_1.el)('div', 'menu-search', menuSearch, (0, dom_1.icon)('search'));
+        this.side = (0, dom_1.el)('nav', 'side-nav');
+        this.side.setAttribute('aria-label', '전체 메뉴');
+        this.paintMenu('');
+        const sideFoot = (0, dom_1.el)('div', 'sidebar-foot', (0, dom_1.el)('span', 'side-foot-label', 'U.STRA API PLATFORM'), (0, dom_1.el)('p', '', this.isDemo() ? '데이터는 브라우저 메모리에만 유지됩니다.' : 'Tenant와 권한은 서버에서 검증합니다.'), (0, dom_1.el)('span', 'version-label', appVersion));
+        const sidebar = (0, dom_1.el)('aside', 'sidebar', sideHeader, searchWrap, (0, dom_1.el)('div', 'side-toggle', (0, dom_1.icon)('list'), '전체 메뉴'), this.side, sideFoot);
+        const heading = (0, dom_1.el)('div', 'page-heading', (0, dom_1.el)('div', '', (0, dom_1.el)('p', 'breadcrumb', '워크스페이스', (0, dom_1.el)('span', '', '›'), nav.group, (0, dom_1.el)('span', '', '›'), nav.title), (0, dom_1.el)('h1', '', nav.title), (0, dom_1.el)('p', 'page-subtitle', nav.subtitle)), (0, dom_1.button)('새로고침', () => this.paint(), 'btn subtle', 'refresh'));
+        this.main = (0, dom_1.el)('main', 'main-content');
+        this.main.id = 'main-content';
+        const mobileSelect = (0, dom_1.select)('screen', M.NAV.map(n => [n.id, n.title]), this.page);
+        mobileSelect.setAttribute('aria-label', '화면 이동');
+        mobileSelect.addEventListener('change', () => this.go(mobileSelect.value));
+        const stage = (0, dom_1.el)('div', 'stage', (0, dom_1.el)('div', 'mobile-route', mobileSelect), heading, (0, dom_1.el)('div', 'mode-banner ' + (this.isDemo() ? '' : 'connected'), (0, dom_1.icon)(this.isDemo() ? 'info' : 'shield'), (0, dom_1.el)('span', '', this.isDemo() ? '화면 미리보기 · 모든 데이터와 변경은 예시입니다. 실제 서버에는 전송하지 않습니다.' : '서버 연결 모드 · 서버 오류를 예시 데이터로 대체하지 않습니다. 권한은 서버 응답을 따릅니다.'), (0, dom_1.button)(this.isDemo() ? '서버 연결 설정' : '연결 정보', () => this.go('settings'), 'text-button')), this.main, (0, dom_1.el)('footer', 'page-footer', (0, dom_1.el)('span', '', 'U.STRA API Platform'), (0, dom_1.el)('span', '', this.isDemo() ? 'UI Preview · Synthetic Data' : `${this.context?.tenantCode ?? '인증 대기'} · Same-origin API`)));
+        const skip = (0, dom_1.el)('a', 'skip-link', '본문 바로가기');
+        skip.href = '#main-content';
+        skip.addEventListener('click', e => { e.preventDefault(); this.main.tabIndex = -1; this.main.focus(); });
+        this.root.replaceChildren(skip, header, (0, dom_1.el)('div', 'workspace', sidebar, stage));
+        document.title = nav.title + ' | U.STRA API Platform';
+        this.renderPage();
+    }
+    paintMenu(query) { this.side.replaceChildren(); let last = ''; let count = 0; for (const n of M.NAV) {
+        if (query && !n.title.includes(query))
+            continue;
+        if (last !== n.group) {
+            this.side.append((0, dom_1.el)('div', 'nav-group', n.group));
+            last = n.group;
+        }
+        const b = (0, dom_1.button)(n.title, () => this.go(n.id), 'nav-item' + (this.page === n.id ? ' active' : ''), n.icon);
+        if (this.page === n.id)
+            b.setAttribute('aria-current', 'page');
+        this.side.append(b);
+        count++;
+    } if (!count)
+        this.side.append((0, dom_1.el)('p', 'muted menu-empty', '일치하는 메뉴가 없습니다.')); }
+    renderPage() { const render = { home: () => this.home(), catalog: () => this.catalog(), products: () => this.products(), import: () => this.importPage(), apps: () => this.apps(), requests: () => this.requests(), entitlements: () => this.entitlements(), operations: () => this.operations(), audit: () => this.audit(), settings: () => this.settings() }; render[this.page](); }
+    errorNode(error, retry) { if (error instanceof DOMException && error.name === 'AbortError')
+        return (0, dom_1.el)('div'); const e = error instanceof data_1.PortalError ? error : new data_1.PortalError('UI_ERROR', '화면 데이터를 처리하지 못했습니다.'); const label = e.status === 403 ? '접근 권한이 필요합니다.' : e.status === 401 ? '인증이 필요합니다.' : e.uncertain ? '처리 결과를 확인해야 합니다.' : '요청을 완료하지 못했습니다.'; const box = (0, dom_1.el)('div', 'error-panel', (0, dom_1.el)('div', 'empty-icon', (0, dom_1.icon)(e.status === 403 ? 'lock' : 'alert')), (0, dom_1.el)('h3', '', label), (0, dom_1.el)('p', '', e.message), (0, dom_1.el)('code', 'error-code', e.code), e.correlationId ? (0, dom_1.el)('p', 'muted', 'Correlation ID: ' + e.correlationId) : null, retry ? (0, dom_1.button)('다시 조회', retry, 'btn', 'refresh') : null); box.setAttribute('role', 'alert'); return box; }
+    load(host, fn) {
+        this.slots.get(host)?.abort();
+        const slot = new AbortController();
+        this.slots.set(host, slot);
+        const parent = this.controller.signal, abort = () => slot.abort();
+        parent.addEventListener('abort', abort, { once: true });
+        if (parent.aborted)
+            slot.abort();
+        const current = this.epoch, signal = slot.signal;
+        host.replaceChildren((0, dom_1.loading)());
+        const currentView = () => !this.disposed && current === this.epoch && !signal.aborted && host.isConnected && this.slots.get(host) === slot;
+        void fn(signal).then(node => { if (currentView())
+            host.replaceChildren(node); }).catch(error => { if (currentView())
+            host.replaceChildren(this.errorNode(error, () => this.paint())); }).finally(() => parent.removeEventListener('abort', abort));
+    }
+    toast(message) { const t = (0, dom_1.el)('div', 'toast', (0, dom_1.icon)('check'), message); t.setAttribute('role', 'status'); this.root.append(t); setTimeout(() => t.remove(), 4000); }
+    dialog(title, subtitle = '') {
+        this.activeDialog?.close();
+        const controller = new AbortController();
+        const d = (0, dom_1.el)('dialog', 'dialog');
+        const headingId = 'dialog-title-' + this.epoch + '-' + Math.random().toString(16).slice(2);
+        const titleEl = (0, dom_1.el)('h2', '', title);
+        titleEl.id = headingId;
+        d.setAttribute('aria-labelledby', headingId);
+        const body = (0, dom_1.el)('div', 'dialog-body');
+        const footer = (0, dom_1.el)('div', 'dialog-footer');
+        const close = () => { controller.abort(); if (d.open)
+            d.close(); d.remove(); if (this.activeDialog?.element === d)
+            this.activeDialog = null; };
+        const closeBtn = (0, dom_1.button)('닫기', () => { if (d.dataset.busy !== 'true')
+            close(); }, 'icon-only dialog-close', 'close');
+        const h = (0, dom_1.el)('div', 'dialog-header', (0, dom_1.el)('div', '', (0, dom_1.el)('span', 'eyebrow', 'U.STRA API PLATFORM'), titleEl, subtitle ? (0, dom_1.el)('p', 'muted', subtitle) : null), closeBtn);
+        d.append(h, body, footer);
+        d.addEventListener('cancel', event => { if (d.dataset.busy === 'true')
+            event.preventDefault(); });
+        d.addEventListener('close', close);
+        d.addEventListener('click', e => { if (e.target === d && d.dataset.busy !== 'true') {
+            const r = d.getBoundingClientRect();
+            if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)
+                close();
+        } });
+        document.body.append(d);
+        d.showModal();
+        const handle = { element: d, body, footer, signal: controller.signal, close };
+        this.activeDialog = handle;
+        return handle;
+    }
+    async dialogLoad(d, fn) { d.body.replaceChildren((0, dom_1.loading)()); try {
+        const node = await fn();
+        if (!d.signal.aborted)
+            d.body.replaceChildren(node);
+    }
+    catch (e) {
+        if (!d.signal.aborted)
+            d.body.replaceChildren(this.errorNode(e));
+    } }
+    formAction(d, form, label, action, success, safeReplay = false) {
+        const status = (0, dom_1.el)('div', 'form-status');
+        const key = M.uuid();
+        let running = false;
+        let finished = false;
+        let uncertain = false;
+        let signature = '';
+        const submit = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('check'), label);
+        submit.type = 'submit';
+        form.append(status, (0, dom_1.el)('div', 'form-actions', (0, dom_1.button)('취소', () => { if (!running)
+            d.close(); }, 'btn'), submit));
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            if (running || finished || !form.reportValidity())
+                return;
+            const current = JSON.stringify(Array.from(new FormData(form).entries()).map(([k, v]) => [k, v instanceof File ? `${v.name}:${v.size}:${v.lastModified}` : v]));
+            if (uncertain && current !== signature) {
+                status.replaceChildren((0, dom_1.notice)('이전 요청의 결과가 불확실합니다. 입력을 변경하지 말고 원래 내용으로 상태를 확인해 주세요.', 'warn'));
+                return;
+            }
+            signature = current;
+            running = true;
+            d.element.dataset.busy = 'true';
+            submit.disabled = true;
+            status.replaceChildren((0, dom_1.loading)());
+            // Synchronous action captures form inputs before disabling them (disabled controls are omitted by FormData).
+            const controls = Array.from(form.querySelectorAll('input,select,textarea'));
+            const originally = controls.map(c => c.disabled);
+            let promise;
+            try {
+                promise = action(key);
+            }
+            catch (e) {
+                promise = Promise.reject(e);
+            }
+            controls.forEach(c => c.disabled = true);
+            void promise.then(result => { finished = true; if (!d.signal.aborted) {
+                d.body.replaceChildren(success(result));
+                d.footer.replaceChildren((0, dom_1.button)('확인', () => { d.close(); this.paint(); }, 'btn primary'));
+            } }).catch(e => { uncertain = e instanceof data_1.PortalError && e.uncertain; if (!d.signal.aborted) {
+                status.replaceChildren(this.errorNode(e));
+                if (uncertain)
+                    status.append((0, dom_1.notice)(safeReplay ? '자동 재전송하지 않습니다. 동일 내용·동일 키로만 다시 확인합니다. 요청 키: ' + key : '이 저장 요청에는 서버 멱등성 계약이 없습니다. 중복 저장을 피하기 위해 재전송하지 않습니다. 창을 닫고 현재 상태를 조회해 주세요.', 'warn'));
+                submit.textContent = uncertain ? (safeReplay ? '같은 요청 다시 확인' : '처리 결과 재조회 필요') : label;
+            } }).finally(() => { running = false; d.element.dataset.busy = 'false'; submit.disabled = finished || (uncertain && !safeReplay); controls.forEach((c, i) => c.disabled = originally[i]); });
+        });
+    }
+    result(title, items, detail = '') { return (0, dom_1.el)('div', 'result-panel', (0, dom_1.el)('div', 'success-emblem', (0, dom_1.icon)('check')), (0, dom_1.el)('h3', '', title), detail ? (0, dom_1.notice)(detail) : null, (0, dom_1.kv)(items), this.isDemo() ? (0, dom_1.notice)('예시 데이터 처리입니다. 실제 서버의 저장·승인·발급 결과가 아닙니다.') : null); }
+    help() { const d = this.dialog('화면 사용 안내', '개발 환경 없이 먼저 화면을 살펴볼 수 있습니다.'); d.body.append((0, dom_1.notice)('현재 제공 범위는 10개 메뉴와 주요 상세·입력 화면입니다. 전체 설계 화면의 구현 완료를 뜻하지 않습니다.'), (0, dom_1.kv)([['탐색', '왼쪽 메뉴 또는 상단 업무 메뉴로 화면을 이동합니다.'], ['예시 변경', '앱·Product 생성, 구독 신청, Import와 복구 결과를 브라우저 메모리에서 체험합니다.'], ['실제 연결', '연결 설정에서 서버 모드를 명시적으로 선택합니다. /api/v1은 같은 origin만 사용합니다.'], ['보존 범위', '화면 새로고침 시 예시 변경과 즐겨찾기는 초기화됩니다.'], ['승인·권한', '게시 승인, 실제 Gateway 발급, 외부 ITSM과 자동 운영을 임의 성공 처리하지 않습니다.']])); d.footer.append((0, dom_1.button)('확인', d.close, 'btn primary')); }
+    pager(page, change) { const pages = Math.max(1, Math.ceil(page.totalElements / page.size)); const prev = (0, dom_1.button)('이전', () => change(page.page - 1), 'btn small'); prev.disabled = page.page === 0; const next = (0, dom_1.button)('다음', () => change(page.page + 1), 'btn small'); next.disabled = !(page.hasNext ?? (page.page + 1 < pages)); const p = (0, dom_1.el)('div', 'pagination', (0, dom_1.el)('span', 'muted', `${page.totalElements.toLocaleString()}건 중 ${page.totalElements ? page.page * page.size + 1 : 0}–${Math.min((page.page + 1) * page.size, page.totalElements)}건`), (0, dom_1.el)('div', 'pager-controls', prev, (0, dom_1.el)('span', 'page-number', `${page.page + 1} / ${pages}`), next)); return p; }
+    dataCard(title, count, sub, iconName, tone = 'blue') { return (0, dom_1.el)('div', 'metric-card ' + tone, (0, dom_1.el)('div', 'metric-top', (0, dom_1.el)('span', '', title), (0, dom_1.el)('div', 'metric-icon', (0, dom_1.icon)(iconName))), (0, dom_1.el)('strong', 'metric-number', count), (0, dom_1.el)('span', 'metric-caption', sub)); }
+    home() {
+        const host = (0, dom_1.el)('div', 'home-wrap');
+        this.main.append(host);
+        this.load(host, async (signal) => {
+            const [catalog, apps, entitlements, summary] = await Promise.allSettled([this.repo.catalog({ page: 0, size: 3 }, signal), this.repo.apps(signal), this.repo.entitlements(signal), this.repo.summary(signal)]);
+            const cv = catalog.status === 'fulfilled' ? catalog.value : null, av = apps.status === 'fulfilled' ? apps.value : null, ev = entitlements.status === 'fulfilled' ? entitlements.value : null, sv = summary.status === 'fulfilled' ? summary.value : null;
+            const welcome = (0, dom_1.el)('section', 'welcome-card', (0, dom_1.el)('div', 'welcome-copy', (0, dom_1.el)('p', 'eyebrow', 'CONNECTED ENTERPRISE'), (0, dom_1.el)('h2', '', 'API를 연결하는', (0, dom_1.el)('br'), '하나의 워크스페이스'), (0, dom_1.el)('p', '', '필요한 API를 발견하고, 업무 애플리케이션과 연결하세요.'), (0, dom_1.el)('div', 'welcome-actions', (0, dom_1.button)('API 둘러보기', () => this.go('catalog'), 'btn primary', 'arrow'), (0, dom_1.button)('내 앱 관리', () => this.go('apps'), 'btn', 'apps'))), (0, dom_1.el)('div', 'welcome-art', (0, dom_1.el)('span', 'art-node n1', (0, dom_1.icon)('box')), (0, dom_1.el)('span', 'art-node n2', (0, dom_1.icon)('apps')), (0, dom_1.el)('span', 'art-node n3', (0, dom_1.icon)('shield')), (0, dom_1.el)('div', 'art-core', 'API'), (0, dom_1.el)('span', 'art-caption', 'Discover · Connect · Operate')));
+            const top = (0, dom_1.el)('div', 'home-top', welcome, this.dataCard('공개 API Product', cv?.totalElements ?? '—', '현재 Tenant에 보이는 Product', 'grid'), this.dataCard('내 애플리케이션', av?.length ?? '—', '현재 조회 가능한 앱', 'apps', 'mint'));
+            const quick = (0, dom_1.el)('section', 'card quick-card', ...['catalog', 'import', 'products', 'apps', 'requests', 'entitlements', 'operations', 'audit'].map(id => { const n = M.NAV.find(n => n.id === id); const b = (0, dom_1.button)('', () => this.go(id), 'quick-item'); b.append((0, dom_1.el)('span', 'quick-icon', (0, dom_1.icon)(n.icon)), (0, dom_1.el)('span', '', n.title)); return b; }));
+            const featured = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('지금 탐색할 수 있는 API', (0, dom_1.button)('전체 보기', () => this.go('catalog'), 'text-button', 'arrow')));
+            if (cv)
+                featured.append(cv.items.length ? (0, dom_1.el)('div', 'mini-products', ...cv.items.map(p => { const b = (0, dom_1.button)('', () => this.catalogDetail(p), 'mini-product'); b.append((0, dom_1.el)('span', 'product-symbol ' + this.productTone(p.productCode), (0, dom_1.icon)('box')), (0, dom_1.el)('div', '', (0, dom_1.el)('strong', '', p.displayName), (0, dom_1.el)('p', '', p.provider?.displayName ?? '제공자 미지정')), (0, dom_1.badge)('RELEASED', `공개 버전 ${p.visibleVersions.length}`)); return b; })) : (0, dom_1.empty)('공개된 Product가 없습니다.', '현재 Tenant와 공개 범위를 확인해 주세요.'));
+            else
+                featured.append((0, dom_1.notice)('카탈로그를 불러오지 못했습니다. API 탐색 화면에서 권한과 연결을 확인해 주세요.', 'warn'));
+            const state = (0, dom_1.el)('section', 'card readiness-card', (0, dom_1.sectionTitle)('사용 준비 현황'), (0, dom_1.el)('div', 'readiness-hero', (0, dom_1.el)('div', 'readiness-count', (0, dom_1.el)('strong', '', ev?.filter(e => e.readyToUse).length ?? '—'), (0, dom_1.el)('span', '', '사용 준비 완료')), (0, dom_1.el)('div', 'readiness-orbit', (0, dom_1.icon)('shield'))), (0, dom_1.el)('p', 'muted', '권한 활성화와 Gateway·Credential 상태를 함께 확인합니다.'), (0, dom_1.el)('div', 'status-rows', (0, dom_1.el)('div', '', (0, dom_1.el)('span', '', '결과 확인이 필요한 설정'), (0, dom_1.badge)('UNKNOWN', ev ? String(ev.filter(e => e.latestFulfillment?.status === 'UNKNOWN').length) + '건' : '조회 필요')), (0, dom_1.el)('div', '', (0, dom_1.el)('span', '', '실제 연결 상태'), (0, dom_1.badge)('NOT_MEASURED'))), (0, dom_1.button)('접근권한 확인', () => this.go('entitlements'), 'btn full', 'arrow'));
+            const requests = this.isDemo() ? this.repo.requestsData : this.sessionRequests;
+            const recent = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)(this.isDemo() ? '최근 구독 신청' : '이 화면에서 제출·조회한 요청', (0, dom_1.button)('신청 현황', () => this.go('requests'), 'text-button', 'arrow')));
+            if (requests.length)
+                recent.append((0, dom_1.table)([{ label: '신청 목적', cell: (r) => (0, dom_1.button)(r.purpose, () => this.requestDetail(r), 'cell-link') }, { label: '신청 일시', cell: r => (0, dom_1.date)(r.createdAt) }, { label: '상태', cell: r => (0, dom_1.badge)(r.status) }], requests.slice(0, 4), '최근 구독 신청'));
+            else
+                recent.append((0, dom_1.empty)('표시할 요청이 없습니다.', '요청 ID로 조회하거나 카탈로그에서 구독을 신청해 주세요.'));
+            const check = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('운영 체크포인트'), (0, dom_1.el)('div', 'status-rows', (0, dom_1.el)('div', '', (0, dom_1.el)('span', '', 'Outbox 전달 대기'), (0, dom_1.el)('strong', '', sv?.outboxStatusCounts.PENDING ?? '—')), (0, dom_1.el)('div', '', (0, dom_1.el)('span', '', '검색 갱신 실패 관측'), (0, dom_1.el)('strong', '', sv?.search?.observedOpenFailureCount ?? '—')), (0, dom_1.el)('div', '', (0, dom_1.el)('span', '', '실시간 응답시간 · 사용량'), (0, dom_1.badge)('NOT_MEASURED'))), (0, dom_1.el)('p', 'subtle-note', '저장된 업무 상태와 실제 외부 시스템의 건강 상태는 다릅니다.'), (0, dom_1.button)('운영 화면 열기', () => this.go('operations'), 'btn full', 'activity'));
+            return (0, dom_1.el)('div', '', top, quick, (0, dom_1.el)('div', 'home-two', featured, state), (0, dom_1.el)('div', 'home-two', recent, check));
+        });
+    }
+    productTone(code) { return code.startsWith('HR') ? 'blue' : code.startsWith('ERP') ? 'mint' : code.startsWith('WORKS') ? 'purple' : 'amber'; }
+    catalog() {
+        const q = (0, dom_1.input)('q', 'Product 이름, 코드, 설명 또는 제공자 검색', String(this.catalogQuery.q ?? ''), 'search', 200);
+        const provider = this.isDemo() ? (0, dom_1.select)('providerId', [['', '전체 제공자'], ...data_1.DEMO_PROVIDERS.map(p => [p.providerId, p.displayName])], String(this.catalogQuery.providerId ?? '')) : (0, dom_1.input)('providerId', 'Provider ID (선택)', String(this.catalogQuery.providerId ?? ''));
+        const locale = (0, dom_1.select)('locale', [['ko-KR', '한국어'], ['en-US', 'English'], ['ja-JP', '日本語']], String(this.catalogQuery.locale));
+        const filter = (0, dom_1.el)('form', 'filter-bar catalog-filter', (0, dom_1.field)('검색어', q), (0, dom_1.field)('제공자', provider), (0, dom_1.field)('조회 언어', locale));
+        const submit = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('search'), '조회');
+        submit.type = 'submit';
+        filter.append((0, dom_1.el)('div', 'filter-actions', submit, (0, dom_1.button)('초기화', () => { this.catalogQuery = queryDefaults(); this.paint(); }, 'btn')));
+        filter.addEventListener('submit', e => { e.preventDefault(); this.catalogQuery = { ...this.catalogQuery, q: q.value, providerId: provider.value, locale: locale.value, page: 0 }; this.paint(); });
+        const card = (0, dom_1.el)('section', 'card catalog-main', filter);
+        if (!this.isDemo())
+            card.append((0, dom_1.el)('p', 'subtle-note', 'Provider 목록 조회 API가 없으므로 정확한 Provider ID로 필터링합니다.'));
+        const host = (0, dom_1.el)('div');
+        card.append(host);
+        this.main.append(card);
+        this.load(host, async (signal) => {
+            const page = await this.repo.catalog(this.catalogQuery, signal);
+            const toggles = (0, dom_1.el)('div', 'view-toggle', (0, dom_1.button)('카드', () => { this.catalogLayout = 'grid'; this.paint(); }, this.catalogLayout === 'grid' ? 'toggle active' : 'toggle', 'grid'), (0, dom_1.button)('목록', () => { this.catalogLayout = 'list'; this.paint(); }, this.catalogLayout === 'list' ? 'toggle active' : 'toggle', 'list'));
+            const header = (0, dom_1.el)('div', 'result-toolbar', (0, dom_1.el)('h2', '', 'API Product ', (0, dom_1.el)('span', 'count', page.totalElements)), (0, dom_1.el)('div', 'toolbar-right', (0, dom_1.el)('span', 'muted', '공개 범위 내 결과 · 이름순'), toggles));
+            if (!page.items.length)
+                return (0, dom_1.el)('div', '', header, (0, dom_1.empty)('검색 결과가 없습니다.', '검색어·제공자 조건을 변경하거나 공개 상태를 확인해 주세요.', (0, dom_1.button)('조건 초기화', () => { this.catalogQuery = queryDefaults(); this.paint(); }, 'btn')));
+            const results = this.catalogLayout === 'grid' ? (0, dom_1.el)('div', 'catalog-grid', ...page.items.map(p => this.productCard(p))) : (0, dom_1.table)([{ label: 'API Product', cell: (p) => (0, dom_1.el)('div', 'table-product', (0, dom_1.el)('span', 'product-symbol small ' + this.productTone(p.productCode), (0, dom_1.icon)('box')), (0, dom_1.el)('div', '', (0, dom_1.button)(p.displayName, () => this.catalogDetail(p), 'cell-link'), (0, dom_1.el)('small', 'muted', p.productCode))) }, { label: '제공자', cell: p => p.provider?.displayName ?? '—' }, { label: '공개 버전', cell: p => p.visibleVersions.map(v => v.versionValue).join(' · ') }, { label: '설명', cell: p => (0, dom_1.el)('span', 'truncate', p.description ?? '—') }, { label: '상세', cell: p => (0, dom_1.button)('상세 보기', () => this.catalogDetail(p), 'btn small', 'arrow') }], page.items, 'API 카탈로그');
+            return (0, dom_1.el)('div', '', header, results, this.pager(page, next => { this.catalogQuery.page = next; this.paint(); }));
+        });
+    }
+    productCard(p) { const star = (0, dom_1.button)('', () => { if (this.favorites.has(p.apiProductId))
+        this.favorites.delete(p.apiProductId);
+    else
+        this.favorites.add(p.apiProductId); star.classList.toggle('saved', this.favorites.has(p.apiProductId)); star.setAttribute('aria-pressed', String(this.favorites.has(p.apiProductId))); }, 'favorite' + (this.favorites.has(p.apiProductId) ? ' saved' : ''), 'star'); star.setAttribute('aria-label', p.displayName + ' 즐겨찾기'); star.setAttribute('aria-pressed', String(this.favorites.has(p.apiProductId))); const title = (0, dom_1.button)(p.displayName, () => this.catalogDetail(p), 'product-title'); return (0, dom_1.el)('article', 'product-card', (0, dom_1.el)('div', 'product-card-top', (0, dom_1.el)('span', 'product-symbol ' + this.productTone(p.productCode), (0, dom_1.icon)('box')), star), (0, dom_1.el)('div', 'product-provider', p.provider?.displayName ?? '제공자 미지정'), title, (0, dom_1.el)('p', 'product-description', p.description ?? '설명이 없습니다.'), (0, dom_1.el)('span', 'product-code', p.productCode), (0, dom_1.el)('div', 'product-card-bottom', (0, dom_1.badge)('RELEASED', `공개 버전 ${p.visibleVersions.length}개`), (0, dom_1.button)('상세 보기', () => this.catalogDetail(p), 'text-button', 'arrow'))); }
+    catalogDetail(p) {
+        const d = this.dialog(p.displayName, p.productCode + ' · ' + (p.provider?.displayName ?? '제공자 미지정'));
+        const view = (0, dom_1.el)('div');
+        const tabs = (0, dom_1.el)('div', 'tabs');
+        const render = (tab) => {
+            view.replaceChildren();
+            Array.from(tabs.children).forEach(x => x.classList.toggle('active', x.dataset.tab === tab));
+            if (tab === 'overview')
+                view.append((0, dom_1.el)('div', 'detail-intro', (0, dom_1.el)('span', 'product-symbol big ' + this.productTone(p.productCode), (0, dom_1.icon)('box')), (0, dom_1.el)('div', '', (0, dom_1.el)('h3', '', p.displayName), (0, dom_1.el)('p', '', p.description ?? '설명이 없습니다.'))), (0, dom_1.kv)([['Product 코드', p.productCode], ['제공자', p.provider?.displayName ?? '—'], ['표시 언어', p.resolvedLocale ?? 'Canonical'], ['Product ID', (0, dom_1.brief)(p.apiProductId)], ['공개 버전', `${p.visibleVersions.length}개 · 자동 추천/선택하지 않음`]]));
+            if (tab === 'versions')
+                view.append((0, dom_1.table)([{ label: 'Product 버전', cell: (v) => (0, dom_1.el)('strong', '', v.versionValue) }, { label: '게시 ID', cell: v => (0, dom_1.brief)(v.catalogPublicationId) }, { label: '버전 ID', cell: v => (0, dom_1.brief)(v.apiProductVersionId) }, { label: '신청', cell: v => (0, dom_1.button)('이 버전 신청', () => { d.close(); this.subscribe(p, v); }, 'btn small') }], p.visibleVersions, '공개 Product 버전'));
+            if (tab === 'guide')
+                view.append((0, dom_1.notice)('구독은 선택한 게시 버전에 고정됩니다. 새로운 버전이 생겨도 자동 업그레이드하지 않습니다.'), (0, dom_1.kv)([['1. 앱·환경', 'API를 사용할 Consumer App과 환경을 선택합니다.'], ['2. 이용 범위', '요청할 Operation ID를 명시합니다. 빈 범위를 전체 허용으로 해석하지 않습니다.'], ['3. 신청 이후', '승인 완료, 권한 활성화, Gateway 설정과 Credential 확인은 별도 단계입니다.']]), (0, dom_1.notice)('비밀키, access token, raw OpenAPI 원문을 이 화면의 데이터나 로그에 저장하지 않습니다.'));
+        };
+        for (const [key, label] of [['overview', 'Product 소개'], ['versions', '공개 버전'], ['guide', '이용 안내']]) {
+            const b = (0, dom_1.button)(label, () => render(key), 'tab');
+            b.dataset.tab = key;
+            tabs.append(b);
+        }
+        d.body.append(tabs, view);
+        render('overview');
+        d.footer.append((0, dom_1.button)('닫기', d.close, 'btn'), (0, dom_1.button)('구독 신청', () => { d.close(); this.subscribe(p); }, 'btn primary', 'plus'));
+    }
+    products() {
+        const q = (0, dom_1.input)('q', 'Product 코드 또는 이름', this.productQuery);
+        const state = (0, dom_1.select)('state', [['', '전체 상태'], ['DRAFT', '초안'], ['REVIEWING', '검토 중'], ['ACTIVE', '활성'], ['DEPRECATED', '사용 중단 예정'], ['RETIRED', '종료']], this.productState);
+        const f = (0, dom_1.el)('form', 'filter-bar', (0, dom_1.field)('검색어', q), (0, dom_1.field)('상태', state));
+        const search = (0, dom_1.el)('button', 'btn navy', (0, dom_1.icon)('search'), '조회');
+        search.type = 'submit';
+        f.append(search);
+        f.addEventListener('submit', e => { e.preventDefault(); this.productQuery = q.value; this.productState = state.value; this.paint(); });
+        const card = (0, dom_1.el)('section', 'card', f);
+        const host = (0, dom_1.el)('div');
+        card.append(host);
+        this.main.append(card);
+        this.load(host, async (signal) => { const all = await this.repo.products(signal); const rows = all.filter(p => (!this.productState || p.lifecycleState === this.productState) && [p.name, p.productCode].join(' ').toLocaleLowerCase().includes(this.productQuery.toLocaleLowerCase())); return (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'result-toolbar', (0, dom_1.el)('h2', '', 'Product ', (0, dom_1.el)('span', 'count', rows.length)), (0, dom_1.el)('div', 'toolbar-right', (0, dom_1.button)('OpenAPI Import', () => this.go('import'), 'btn', 'upload'), (0, dom_1.button)('Product 등록', () => this.productForm(), 'btn primary', 'plus'))), rows.length ? (0, dom_1.table)([{ label: 'Product 코드', cell: (p) => (0, dom_1.el)('code', '', p.productCode) }, { label: 'Product 이름', cell: p => (0, dom_1.button)(p.name, () => this.productVersions(p), 'cell-link') }, { label: '상태', cell: p => (0, dom_1.badge)(p.lifecycleState) }, { label: '제공자', cell: p => this.providerName(p.providerId) }, { label: 'Revision', cell: p => p.revision }, { label: '변경 일시', cell: p => (0, dom_1.date)(p.updatedAt) }, { label: '관리', cell: p => (0, dom_1.el)('div', 'row-actions', (0, dom_1.button)('버전 · 게시 준비', () => this.productVersions(p), 'btn small'), (0, dom_1.button)('수정', () => this.editProduct(p.apiProductId), 'btn small')) }], rows, 'Product 관리') : (0, dom_1.empty)('조회할 Product가 없습니다.', '새 Product를 등록하거나 조회 조건을 변경해 주세요.'), (0, dom_1.notice)('Product 등록은 DRAFT 생성입니다. Import와 Product 구성, Review 승인, Release, Catalog 공개는 서로 다른 단계입니다.')); });
+    }
+    providerName(id) { return this.isDemo() ? data_1.DEMO_PROVIDERS.find(p => p.providerId === id)?.displayName ?? '—' : (0, dom_1.brief)(id); }
+    providerField(name = 'providerId', value = '') { return this.isDemo() ? (0, dom_1.select)(name, [['', '선택'], ...data_1.DEMO_PROVIDERS.map(p => [p.providerId, p.displayName])], value) : (0, dom_1.input)(name, '확인된 같은 Tenant Provider ID', value); }
+    async editProduct(id) { const d = this.dialog('Product 정보 조회'); await this.dialogLoad(d, async () => { const p = await this.repo.product(id, d.signal); if (!d.signal.aborted) {
+        d.close();
+        this.productForm(p);
+    } return (0, dom_1.el)('div'); }); }
+    productForm(p) {
+        const d = this.dialog(p ? 'Product 수정' : 'Product 등록', '기존 코드와 상태는 일반 수정으로 변경하지 않습니다.');
+        const code = (0, dom_1.input)('productCode', '예: HR-EMPLOYEE', p?.productCode ?? '', 'text', 100);
+        code.readOnly = !!p;
+        const name = (0, dom_1.input)('name', 'Product 이름', p?.name ?? '', 'text', 200);
+        const description = (0, dom_1.textarea)('description', '제공하는 기능과 이용 목적을 입력하세요.', p?.description ?? '');
+        const provider = this.providerField('providerId', p?.providerId ?? '');
+        const owner = (0, dom_1.input)('ownerMembershipId', 'Membership ID', p?.ownerMembershipId ?? this.context?.membershipId ?? '');
+        const form = (0, dom_1.el)('form', 'form-grid', (0, dom_1.field)('Product 코드', code, true), (0, dom_1.field)('Product 이름', name, true), (0, dom_1.field)('제공자', provider, false, this.isDemo() ? '시연 Provider 목록' : 'Provider 목록 API는 아직 없으므로 확인된 ID를 입력합니다.'), (0, dom_1.field)('Owner Membership', owner), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('설명', description)));
+        d.body.append(form);
+        this.formAction(d, form, this.isDemo() ? '예시 데이터 저장' : '서버에 저장', () => this.repo.saveProduct({ productCode: code.value, name: name.value, description: description.value, providerId: provider.value || null, ownerMembershipId: owner.value || null }, p?.apiProductId, p?.revision), r => this.result('Product가 저장되었습니다.', [['Product', r.name], ['코드', r.productCode], ['상태', (0, dom_1.badge)(r.lifecycleState)], ['Revision', r.revision], ['ID', (0, dom_1.brief)(r.apiProductId)]]));
+    }
+    productVersions(p) { const d = this.dialog('버전 · 게시 준비', p.productCode + ' / ' + p.name); void this.dialogLoad(d, async () => { const versions = await this.repo.versions(p.apiProductId, d.signal); const root = (0, dom_1.el)('div', '', (0, dom_1.kv)([['Product 상태', (0, dom_1.badge)(p.lifecycleState)], ['버전 선택 원칙', '현재 버전을 임의로 latest/recommended로 선택하지 않습니다.']])); root.append(versions.length ? (0, dom_1.table)([{ label: '버전', cell: (v) => (0, dom_1.el)('strong', '', v.version) }, { label: '상태', cell: v => (0, dom_1.badge)(v.lifecycleState) }, { label: 'Revision', cell: v => v.revision }, { label: '확인', cell: v => (0, dom_1.el)('div', 'row-actions', (0, dom_1.button)('구성 보기', () => this.versionComponents(v), 'btn small'), (0, dom_1.button)('게시 준비 확인', () => this.readiness(v), 'btn small')) }], versions, 'Product 버전') : (0, dom_1.empty)('등록된 버전이 없습니다.', '새 DRAFT 버전을 추가할 수 있습니다.')); const version = (0, dom_1.input)('version', '예: 1.0.0', '', 'text', 100); const f = (0, dom_1.el)('form', 'inline-form', (0, dom_1.field)('새 버전', version, true)); const submit = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('plus'), 'DRAFT 버전 추가'); submit.type = 'submit'; const status = (0, dom_1.el)('div'); f.append(submit); let pending = false; f.addEventListener('submit', e => { e.preventDefault(); if (pending || !f.reportValidity())
+        return; pending = true; submit.disabled = true; void this.repo.createVersion(p.apiProductId, version.value).then(() => { if (!d.signal.aborted) {
+        d.close();
+        this.productVersions(p);
+    } }).catch(err => status.replaceChildren(this.errorNode(err))).finally(() => { pending = false; submit.disabled = false; }); }); root.append(f, status, (0, dom_1.notice)('승인·Release·공개를 한 번에 실행하는 버튼은 제공하지 않습니다. 서버의 게시 조건을 먼저 확인합니다.')); return root; }); d.footer.append((0, dom_1.button)('닫기', d.close, 'btn')); }
+    versionComponents(v) { const d = this.dialog('버전 구성', v.version + ' · ' + v.lifecycleState); void this.dialogLoad(d, async () => { const items = await this.repo.components(v.apiProductVersionId, d.signal); return (0, dom_1.el)('div', '', (0, dom_1.kv)([['버전 ID', (0, dom_1.brief)(v.apiProductVersionId)]]), items.length ? (0, dom_1.table)([{ label: '구성 대상', cell: (c) => c.targetType }, { label: '대상 ID', cell: c => (0, dom_1.brief)(c.targetId) }, { label: '구성 ID', cell: c => (0, dom_1.brief)(c.componentId) }], items, 'Product 버전 구성') : (0, dom_1.empty)('등록된 구성이 없습니다.', '구성 쓰기 UI는 이번 제공 범위에 포함되지 않습니다.')); }); d.footer.append((0, dom_1.button)('닫기', d.close, 'btn')); }
+    readiness(v) { const d = this.dialog('게시 준비 확인', v.version + ' · 서버의 Readiness 판정'); void this.dialogLoad(d, async () => { const result = await this.repo.readiness(v.apiProductVersionId, d.signal); return (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'readiness-verdict', (0, dom_1.badge)(result.ready ? 'SUCCEEDED' : 'OPEN', result.ready ? '게시 준비 조건 통과' : '확인할 게시 조건이 있습니다.')), (0, dom_1.el)('p', 'muted', 'ready=true도 승인·Release·Catalog 활성화가 자동 완료됐다는 뜻은 아닙니다.'), ...result.blockers.map(b => (0, dom_1.el)('div', 'check-item', (0, dom_1.el)('span', 'check-icon warn', (0, dom_1.icon)('alert')), (0, dom_1.el)('div', '', (0, dom_1.el)('strong', '', b.code), (0, dom_1.el)('p', '', b.message)))), ...result.warnings.map(b => (0, dom_1.notice)(b.code + ' · ' + b.message)), result.snapshotCandidateHash ? (0, dom_1.kv)([['Snapshot hash', (0, dom_1.brief)(result.snapshotCandidateHash)]]) : null); }); d.footer.append((0, dom_1.button)('확인', d.close, 'btn primary')); }
+    importPage() {
+        const provider = this.providerField();
+        const code = (0, dom_1.input)('apiCode', '예: HR-EMPLOYEE-TECH', '', 'text', 100);
+        const file = (0, dom_1.input)('file', '', '', 'file');
+        file.removeAttribute('maxlength');
+        file.accept = '.json,.yaml,.yml';
+        const fileLabel = (0, dom_1.el)('div', 'file-summary', '선택한 파일이 없습니다.');
+        file.addEventListener('change', () => { const f = file.files?.[0]; try {
+            if (f)
+                (0, data_1.checkFile)(f);
+            fileLabel.textContent = f ? `${f.name} · ${(f.size / 1024).toFixed(1)} KB` : '선택한 파일이 없습니다.';
+            file.setCustomValidity('');
+        }
+        catch (e) {
+            fileLabel.textContent = e instanceof Error ? e.message : '파일 오류';
+            file.setCustomValidity('지원하는 파일을 선택해 주세요.');
+        } });
+        const f = (0, dom_1.el)('form', 'import-form');
+        const upload = (0, dom_1.el)('div', 'upload-zone', (0, dom_1.el)('div', 'upload-icon', (0, dom_1.icon)('upload')), (0, dom_1.el)('h3', '', 'OpenAPI 문서를 선택하세요.'), (0, dom_1.el)('p', 'muted', 'JSON · YAML / 화면 기술 제한 2 MiB'), (0, dom_1.field)('OpenAPI 파일', file, true), fileLabel);
+        const status = (0, dom_1.el)('div');
+        const run = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('upload'), this.isDemo() ? 'Import 화면 체험' : '서버로 Import 요청');
+        run.type = 'submit';
+        const example = (0, dom_1.button)('예시 문서 선택', () => { const data = new DataTransfer(); data.items.add(new File([SAMPLE_OPENAPI], 'sample-openapi.json', { type: 'application/json', lastModified: 0 })); file.files = data.files; file.dispatchEvent(new Event('change')); code.value = 'DEMO-EMPLOYEE'; if (provider instanceof HTMLSelectElement)
+            provider.value = (0, data_1.demoId)(10); }, 'btn', 'document');
+        if (!this.isDemo()) {
+            example.disabled = true;
+            example.title = '예시 문서 선택은 예시 데이터 모드에서만 제공됩니다.';
+        }
+        f.append((0, dom_1.el)('div', 'form-grid', (0, dom_1.field)('Provider ID', provider, true, this.isDemo() ? '현재 Tenant의 시연 Provider' : '관리자가 확인한 같은 Tenant의 Provider ID를 사용하세요.'), (0, dom_1.field)('API 코드', code, true, '서버가 trim + uppercase로 canonical 처리합니다.')), upload, (0, dom_1.notice)(this.isDemo() ? '미리보기에서는 업로드 UI와 예시 결과만 체험합니다. OpenAPI 의미 검증·파싱·DB 저장은 수행하지 않습니다.' : 'OpenAPI 3.0/3.1 검증은 서버 Parser가 수행합니다. 원격·외부 파일 $ref는 서버에서 차단됩니다.'), status, (0, dom_1.el)('div', 'form-actions', example, run));
+        let pending = false, done = false, key = M.uuid(), attempt = '', uncertain = false;
+        f.addEventListener('submit', e => {
+            e.preventDefault();
+            if (pending || done || !f.reportValidity())
+                return;
+            const doc = file.files?.[0];
+            if (!doc)
+                return;
+            const sig = [provider.value, code.value, doc.name, doc.size, doc.lastModified].join('|');
+            if (uncertain && attempt !== sig) {
+                status.replaceChildren((0, dom_1.notice)('결과가 불확실한 이전 요청과 입력이 다릅니다. 먼저 이전 요청 상태를 확인해 주세요.', 'warn'));
+                return;
+            }
+            attempt = sig;
+            pending = true;
+            run.disabled = true;
+            provider.disabled = true;
+            code.disabled = true;
+            file.disabled = true;
+            status.replaceChildren((0, dom_1.loading)());
+            void this.repo.importFile(provider.value, code.value, doc, key).then(r => { done = true; status.replaceChildren(this.importResultNode(r)); run.textContent = '처리 결과 확인됨'; }).catch(err => { uncertain = err instanceof data_1.PortalError && err.uncertain; status.replaceChildren(this.errorNode(err)); if (uncertain)
+                status.append((0, dom_1.notice)('동일 파일·동일 요청 키로만 다시 확인합니다. Key: ' + key, 'warn')); }).finally(() => { pending = false; run.disabled = done; provider.disabled = done; code.disabled = done; file.disabled = done; });
+        });
+        const reset = (0, dom_1.button)('새 Import 입력', () => { if (!pending)
+            this.paint(); }, 'btn', 'plus');
+        const left = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('파일 가져오기', reset), f);
+        const right = (0, dom_1.el)('aside', 'card import-policy', (0, dom_1.sectionTitle)('Import 처리 범위'), (0, dom_1.el)('ol', 'steps', (0, dom_1.el)('li', '', (0, dom_1.el)('strong', '', 'Provider · API 식별'), (0, dom_1.el)('p', '', '동일 Tenant Provider와 명시적인 API 코드를 사용합니다.')), (0, dom_1.el)('li', '', (0, dom_1.el)('strong', '', 'OpenAPI 검증'), (0, dom_1.el)('p', '', '서버가 3.0/3.1 문서와 내부 참조를 검사합니다.')), (0, dom_1.el)('li', '', (0, dom_1.el)('strong', '', '기술 API 생성'), (0, dom_1.el)('p', '', 'API · APIVersion(DRAFT) · Operation까지만 생성합니다.'))), (0, dom_1.notice)('Product · ProductVersion · Catalog Publication은 자동 생성되지 않습니다.'), (0, dom_1.el)('h3', '', '중복 요청 처리'), (0, dom_1.el)('p', 'muted', '동일 API·버전·hash는 재사용합니다. 다른 hash로 기존 버전을 조용히 덮어쓰지 않습니다.'), (0, dom_1.el)('h3', '', '원문 보호'), (0, dom_1.el)('p', 'muted', '업로드 문서는 화면 저장소에 보관하지 않습니다. 서버도 원문을 Audit·Outbox에 기록하지 않습니다.'));
+        const lookup = (0, dom_1.input)('importId', 'Import ID');
+        const look = (0, dom_1.el)('form', 'card compact-form', (0, dom_1.field)('이전 Import 결과 조회', lookup, true));
+        const lb = (0, dom_1.el)('button', 'btn', (0, dom_1.icon)('search'), '조회');
+        lb.type = 'submit';
+        const resultHost = (0, dom_1.el)('div');
+        look.append(lb, resultHost);
+        look.addEventListener('submit', e => { e.preventDefault(); if (!look.reportValidity())
+            return; this.load(resultHost, async (signal) => this.importResultNode(await this.repo.importResult(lookup.value, signal))); });
+        this.main.append((0, dom_1.el)('div', 'two-column', left, right), look);
+    }
+    importResultNode(r) { return this.result(this.isDemo() ? 'Import 예시 결과' : 'Import 처리 결과', [['상태', (0, dom_1.badge)(r.status)], ['API 코드', r.apiCode], ['버전', r.version ?? '—'], ['Import ID', (0, dom_1.el)('div', 'copy-field', (0, dom_1.brief)(r.importId), (0, dom_1.copyButton)(r.importId))], ['Candidate ID', (0, dom_1.brief)(r.candidateId)], ['API Version ID', (0, dom_1.brief)(r.apiVersionId)], ['원문 SHA-256', (0, dom_1.brief)(r.sourceContentHash)], ['재사용 여부', r.idempotentReplay ? '동일 요청 재사용' : '새 처리 결과']], this.isDemo() ? '이 결과는 파서 검증을 통과했다는 증거가 아닙니다. 실제 기술 API는 생성되지 않습니다.' : r.failureCode ? '실패 코드: ' + r.failureCode : ''); }
+    apps() { const host = (0, dom_1.el)('div'); this.main.append(host); this.load(host, async (signal) => { const apps = await this.repo.apps(signal); const card = (0, dom_1.el)('section', 'card', (0, dom_1.el)('div', 'result-toolbar', (0, dom_1.el)('h2', '', '애플리케이션 ', (0, dom_1.el)('span', 'count', apps.length)), (0, dom_1.button)('애플리케이션 등록', () => this.appForm(), 'btn primary', 'plus'))); card.append(apps.length ? (0, dom_1.table)([{ label: '애플리케이션', cell: (a) => (0, dom_1.el)('div', 'table-product', (0, dom_1.el)('span', 'product-symbol small mint', (0, dom_1.icon)('apps')), (0, dom_1.el)('div', '', (0, dom_1.button)(a.name, () => this.appDetail(a), 'cell-link'), (0, dom_1.el)('small', 'muted', a.appCode))) }, { label: '설명', cell: a => (0, dom_1.el)('span', 'truncate', a.description ?? '—') }, { label: '상태', cell: a => (0, dom_1.badge)(a.lifecycleState) }, { label: 'Revision', cell: a => a.revision }, { label: '환경', cell: a => (0, dom_1.button)('환경 관리', () => this.appDetail(a), 'btn small') }, { label: '수정 일시', cell: a => (0, dom_1.date)(a.updatedAt) }], apps, 'Consumer 애플리케이션') : (0, dom_1.empty)('등록된 앱이 없습니다.', '앱을 등록하고 실행 환경을 추가할 수 있습니다.')); return (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'three-metrics', this.dataCard('등록된 앱', apps.length, '현재 조회 가능한 앱', 'apps'), this.dataCard('활성 앱', apps.filter(a => a.lifecycleState === 'ACTIVE').length, '서버 lifecycleState 기준', 'check', 'mint'), this.dataCard('작성 중', apps.filter(a => a.lifecycleState === 'DRAFT').length, '신규 앱은 DRAFT 생성', 'document', 'purple')), card, (0, dom_1.notice)('새 앱·환경을 만들었다고 Credential이나 Gateway Client가 발급되는 것은 아닙니다.')); }); }
+    appForm() { const d = this.dialog('애플리케이션 등록', '앱의 기본정보를 입력합니다. 신규 앱은 DRAFT로 생성됩니다.'); const code = (0, dom_1.input)('appCode', '예: WORK-PORTAL', '', 'text', 100), name = (0, dom_1.input)('name', '애플리케이션 이름', '', 'text', 200), desc = (0, dom_1.textarea)('description', '애플리케이션 설명'), owner = (0, dom_1.input)('ownerMembershipId', 'Owner Membership ID', this.context?.membershipId ?? ''), org = (0, dom_1.input)('organizationId', 'Organization ID (선택)', this.context?.organizationId ?? ''); const form = (0, dom_1.el)('form', 'form-grid', (0, dom_1.field)('앱 코드', code, true), (0, dom_1.field)('앱 이름', name, true), (0, dom_1.field)('Owner Membership', owner, true), (0, dom_1.field)('소속 Organization', org), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('설명', desc))); d.body.append(form); this.formAction(d, form, this.isDemo() ? '예시 앱 저장' : '서버에 앱 등록', () => this.repo.saveApp({ appCode: code.value, name: name.value, description: desc.value, ownerMembershipId: owner.value, organizationId: org.value || null }), a => this.result('애플리케이션이 등록되었습니다.', [['앱 이름', a.name], ['앱 코드', a.appCode], ['앱 ID', (0, dom_1.brief)(a.consumerAppId)], ['상태', (0, dom_1.badge)(a.lifecycleState)]])); }
+    appDetail(a) {
+        const d = this.dialog(a.name, a.appCode);
+        void this.dialogLoad(d, async () => {
+            const envs = await this.repo.environments(a.consumerAppId, d.signal);
+            const root = (0, dom_1.el)('div', '', (0, dom_1.kv)([['앱 ID', (0, dom_1.brief)(a.consumerAppId)], ['상태', (0, dom_1.badge)(a.lifecycleState)], ['설명', a.description ?? '—'], ['Owner Membership', (0, dom_1.brief)(a.ownerMembershipId)]]), (0, dom_1.sectionTitle)('실행 환경'), envs.length ? (0, dom_1.table)([{ label: '환경', cell: (e) => (0, dom_1.badge)(e.environmentType) }, { label: '환경 ID', cell: e => (0, dom_1.el)('div', 'copy-field', (0, dom_1.brief)(e.consumerAppEnvironmentId), (0, dom_1.copyButton)(e.consumerAppEnvironmentId)) }, { label: 'Revision', cell: e => e.revision }], envs, '앱 실행 환경') : (0, dom_1.empty)('실행 환경이 없습니다.', 'DEV, TEST 또는 PROD 환경을 명시적으로 추가합니다.'));
+            const type = (0, dom_1.select)('environmentType', [['', '선택'], ['DEV', 'DEV · 개발'], ['TEST', 'TEST · 테스트'], ['PROD', 'PROD · 운영']]);
+            const f = (0, dom_1.el)('form', 'inline-form', (0, dom_1.field)('환경 추가', type, true));
+            const b = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('plus'), '환경 추가');
+            b.type = 'submit';
+            const err = (0, dom_1.el)('div');
+            f.append(b);
+            let busy = false;
+            f.addEventListener('submit', e => { e.preventDefault(); if (busy || !f.reportValidity())
+                return; busy = true; b.disabled = true; void this.repo.createEnvironment(a.consumerAppId, type.value).then(() => { if (!d.signal.aborted) {
+                d.close();
+                this.appDetail(a);
+            } }).catch(e => err.replaceChildren(this.errorNode(e))).finally(() => { busy = false; b.disabled = false; }); });
+            root.append(f, err, (0, dom_1.notice)('이 화면은 환경 메타데이터만 만듭니다. Secret 입력·조회는 제공하지 않으며 앱 활성화도 별도의 서버 권한 검증을 거칩니다.'));
+            return root;
+        });
+        if (a.lifecycleState === 'DRAFT') {
+            const activate = (0, dom_1.button)('앱 활성화', () => { if (!window.confirm(this.isDemo() ? '시연 앱 메타데이터를 활성화할까요?' : '서버 권한과 상태를 검증한 뒤 앱을 활성화합니다. 계속할까요?'))
+                return; activate.disabled = true; d.element.dataset.busy = 'true'; void this.repo.activateApp(a.consumerAppId, a.revision).then(updated => { if (!d.signal.aborted) {
+                d.close();
+                this.appDetail(updated);
+            } }).catch(err => { if (!d.signal.aborted)
+                d.body.append(this.errorNode(err)); }).finally(() => { activate.disabled = false; d.element.dataset.busy = 'false'; }); }, 'btn primary', 'check');
+            d.footer.append(activate);
+        }
+        d.footer.append((0, dom_1.button)('닫기', d.close, 'btn'));
+    }
+    subscribe(product, selected) {
+        const d = this.dialog('API 구독 신청', product ? product.displayName : '게시 버전과 이용 앱·환경을 명시적으로 선택합니다.');
+        void this.dialogLoad(d, async () => {
+            const apps = await this.repo.apps(d.signal);
+            const env = (0, dom_1.select)('consumerAppEnvironmentId', [['', '먼저 앱을 선택하세요.']]);
+            const app = (0, dom_1.select)('consumerAppId', [['', '선택'], ...apps.map(a => [a.consumerAppId, `${a.name} · ${a.appCode} (${a.lifecycleState})`])]);
+            const versions = product?.visibleVersions ?? [];
+            const version = product ? (0, dom_1.select)('catalogPublicationId', [['', '공개 버전을 선택하세요.'], ...versions.map(v => [v.catalogPublicationId, `v${v.versionValue} · ${v.apiProductVersionId.slice(-6)}`])], selected?.catalogPublicationId ?? '') : (0, dom_1.input)('catalogPublicationId', '확인된 Catalog Publication ID');
+            const purpose = (0, dom_1.textarea)('purpose', '이 API를 사용하는 업무 목적을 입력해 주세요.');
+            const volume = (0, dom_1.input)('expectedCallVolume', '예: 내부 업무 조회 / 예상 요청 규모', '', 'text', 500);
+            const ops = (0, dom_1.textarea)('requestedApiOperationIds', '요청할 Operation ID를 줄바꿈 또는 쉼표로 구분하여 입력하세요.', '', 20000);
+            const envStatus = (0, dom_1.el)('div');
+            let envSeq = 0;
+            app.addEventListener('change', () => { const seq = ++envSeq; env.replaceChildren(); const initial = (0, dom_1.el)('option', '', '환경 조회 중'); initial.value = ''; env.append(initial); env.disabled = true; envStatus.replaceChildren(); if (!app.value) {
+                initial.textContent = '먼저 앱을 선택하세요.';
+                return;
+            } void this.repo.environments(app.value, d.signal).then(list => { if (seq !== envSeq || d.signal.aborted)
+                return; env.replaceChildren(); const choose = (0, dom_1.el)('option', '', list.length ? '선택' : '등록된 환경 없음'); choose.value = ''; env.append(choose); for (const e of list) {
+                const o = (0, dom_1.el)('option', '', `${e.environmentType} · ${e.consumerAppEnvironmentId.slice(-6)}`);
+                o.value = e.consumerAppEnvironmentId;
+                env.append(o);
+            } env.disabled = false; }).catch(e => { if (seq === envSeq && !d.signal.aborted) {
+                env.replaceChildren((0, dom_1.el)('option', '', '환경 조회 실패'));
+                envStatus.replaceChildren(this.errorNode(e));
+            } }); });
+            const versionText = (0, dom_1.el)('p', 'field-hint', '자동 최신 버전 선택 없음 · 특정 Publication에 고정됩니다.');
+            version.addEventListener('change', () => { const v = versions.find(v => v.catalogPublicationId === version.value); versionText.textContent = v ? '선택된 ProductVersion: ' + v.apiProductVersionId : '공개 버전을 선택하세요.'; ops.value = ''; });
+            const root = (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'flow-strip', (0, dom_1.el)('span', 'active', '1. 게시 버전'), (0, dom_1.icon)('chevron'), (0, dom_1.el)('span', '', '2. 앱 · 환경'), (0, dom_1.icon)('chevron'), (0, dom_1.el)('span', '', '3. 범위 · 목적')));
+            const form = (0, dom_1.el)('form', 'form-grid', (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('구독할 게시 버전', version, true), versionText), (0, dom_1.field)('이용 애플리케이션', app, true), (0, dom_1.field)('실행 환경', env, true), (0, dom_1.el)('div', 'span-two', envStatus), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('요청 Operation ID', ops, true, '빈 범위를 전체 허용으로 처리하지 않습니다. 서버가 요청 범위와 게시 구성의 일치를 검증합니다.')), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('사용 목적', purpose, true)), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('예상 이용 규모', volume)));
+            if (this.isDemo())
+                form.append((0, dom_1.el)('div', 'span-two', (0, dom_1.button)('시연 입력 채우기', () => { if (!version.value && versions.length)
+                    version.value = versions[0].catalogPublicationId; const v = versions.find(v => v.catalogPublicationId === version.value); ops.value = v ? (0, data_1.demoId)(700 + Math.max(0, this.repo.versionsData.findIndex(x => x.apiProductVersionId === v.apiProductVersionId))) : (0, data_1.demoId)(700); purpose.value = '업무 포털의 데이터 조회 연계'; volume.value = '화면 검증용 예시'; }, 'btn', 'document')));
+            form.append((0, dom_1.el)('div', 'span-two', (0, dom_1.notice)('Operation 선택 목록·API Version 확장 조회가 제공되지 않는 경우, 제공자로부터 확인한 ID를 입력합니다. 구독 신청만으로 사용 준비가 완료되지 않습니다.')));
+            this.formAction(d, form, this.isDemo() ? '예시 구독 신청' : '서버에 구독 신청', key => { const ids = ops.value.split(/[\s,]+/).filter(Boolean); if (ids.length === 0 || ids.length > 500 || ids.some(v => !/^[A-Za-z0-9._:-]{1,200}$/.test(v)))
+                throw new data_1.PortalError('INVALID_SCOPE', '명시적인 Operation ID 목록이 필요합니다.'); return this.repo.createRequest({ consumerAppEnvironmentId: env.value, catalogPublicationId: version.value, purpose: purpose.value, expectedCallVolume: volume.value, requestedApiOperationIds: ids }, key); }, r => { this.rememberRequest(r); return this.result('구독 신청을 접수했습니다.', [['요청 ID', (0, dom_1.el)('div', 'copy-field', (0, dom_1.brief)(r.subscriptionRequestId), (0, dom_1.copyButton)(r.subscriptionRequestId))], ['상태', (0, dom_1.badge)(r.status)], ['고정 ProductVersion', (0, dom_1.brief)(r.apiProductVersionId)], ['요청 범위', `${r.requestedApiOperationIds.length}개 Operation`], ['사용 목적', r.purpose]], '승인, Entitlement 부여, Gateway 설정, Credential 확인은 각각 별도 단계입니다.'); }, true);
+            root.append(form);
+            return root;
+        });
+    }
+    rememberRequest(r) { this.sessionRequests = [r, ...this.sessionRequests.filter(x => x.subscriptionRequestId !== r.subscriptionRequestId)]; }
+    requests() {
+        const reqId = (0, dom_1.input)('subscriptionRequestId', 'Subscription Request ID');
+        const f = (0, dom_1.el)('form', 'filter-bar', (0, dom_1.field)('신청 ID 조회', reqId, true));
+        const submit = (0, dom_1.el)('button', 'btn navy', (0, dom_1.icon)('search'), '조회');
+        submit.type = 'submit';
+        f.append(submit);
+        const error = (0, dom_1.el)('div');
+        let pending = false;
+        f.addEventListener('submit', e => { e.preventDefault(); if (pending || !f.reportValidity())
+            return; pending = true; submit.disabled = true; error.replaceChildren((0, dom_1.loading)()); void this.repo.request(reqId.value, this.controller.signal).then(r => { this.rememberRequest(r); error.replaceChildren(); this.requestDetail(r); }).catch(e => error.replaceChildren(this.errorNode(e))).finally(() => { pending = false; submit.disabled = false; }); });
+        const rows = this.isDemo() ? this.repo.requestsData : this.sessionRequests;
+        const card = (0, dom_1.el)('section', 'card', f, error, (0, dom_1.el)('div', 'result-toolbar', (0, dom_1.el)('h2', '', this.isDemo() ? '구독 신청 목록' : '현재 화면에서 제출·조회한 요청', (0, dom_1.el)('span', 'count', rows.length)), (0, dom_1.button)('구독 신청', () => this.subscribe(), 'btn primary', 'plus')));
+        if (!this.isDemo())
+            card.append((0, dom_1.notice)('현재 백엔드에는 구독 신청 전체 목록 GET이 없습니다. 조회하지 않은 과거 요청은 여기에 나타나지 않으며, 요청 ID로 확인해야 합니다.'));
+        card.append(rows.length ? (0, dom_1.table)([{ label: '신청 목적', cell: (r) => (0, dom_1.button)(r.purpose, () => this.requestDetail(r), 'cell-link') }, { label: '요청 ID', cell: r => (0, dom_1.brief)(r.subscriptionRequestId) }, { label: '고정 버전 ID', cell: r => (0, dom_1.brief)(r.apiProductVersionId) }, { label: '상태', cell: r => (0, dom_1.badge)(r.status) }, { label: '신청 일시', cell: r => (0, dom_1.date)(r.createdAt) }, { label: '확인', cell: r => (0, dom_1.button)('상세', () => this.requestDetail(r), 'btn small') }], rows, '구독 신청 현황') : (0, dom_1.empty)('표시할 구독 신청이 없습니다.', '카탈로그에서 게시 버전을 선택하거나 요청 ID로 조회하세요.', (0, dom_1.button)('카탈로그 탐색', () => this.go('catalog'), 'btn', 'grid')));
+        const approvedHost = (0, dom_1.el)('div');
+        const approved = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('승인 후 생성된 Subscription'), approvedHost);
+        this.main.append(card, approved);
+        this.load(approvedHost, async (signal) => { const list = await this.repo.subscriptions(signal); return list.length ? (0, dom_1.table)([{ label: 'Subscription ID', cell: (r) => (0, dom_1.brief)(M.scalar(r.subscriptionId)) }, { label: '원본 신청 ID', cell: r => (0, dom_1.brief)(M.scalar(r.sourceSubscriptionRequestId)) }, { label: '환경 ID', cell: r => (0, dom_1.brief)(M.scalar(r.consumerAppEnvironmentId)) }, { label: '상태', cell: r => (0, dom_1.badge)(M.scalar(r.status)) }, { label: '접근권한', cell: () => (0, dom_1.button)('사용 준비 확인', () => this.go('entitlements'), 'btn small') }], list, '생성된 Subscription') : (0, dom_1.empty)('생성된 Subscription이 없습니다.', '승인 및 서버 처리 이후 별도로 생성됩니다.'); });
+    }
+    requestDetail(r) {
+        const d = this.dialog('구독 신청 상세', r.subscriptionRequestId);
+        d.body.append((0, dom_1.el)('div', 'lifecycle-strip', (0, dom_1.el)('span', 'current', '신청'), (0, dom_1.icon)('chevron'), (0, dom_1.el)('span', '', '승인'), (0, dom_1.icon)('chevron'), (0, dom_1.el)('span', '', '권한 부여'), (0, dom_1.icon)('chevron'), (0, dom_1.el)('span', '', 'Gateway · Credential')), (0, dom_1.kv)([['현재 상태', (0, dom_1.badge)(r.status)], ['사용 목적', r.purpose], ['환경 ID', (0, dom_1.brief)(r.consumerAppEnvironmentId)], ['Publication ID', (0, dom_1.brief)(r.catalogPublicationId)], ['고정 ProductVersion', (0, dom_1.brief)(r.apiProductVersionId)], ['요청 Operation', (0, dom_1.el)('div', 'id-list', ...r.requestedApiOperationIds.map(id => (0, dom_1.el)('code', '', id)))], ['Revision', r.revision], ['Snapshot hash', (0, dom_1.brief)(r.snapshotHash)], ['신청 일시', (0, dom_1.date)(r.createdAt)]]), (0, dom_1.notice)('위 흐름은 처리 단계 안내이며 현재 상태 외의 단계가 완료됐음을 표시하지 않습니다.'));
+        if (r.status === 'SUBMITTED') {
+            const cancel = (0, dom_1.button)('신청 취소', () => { if (!window.confirm(this.isDemo() ? '예시 신청을 취소하시겠습니까?' : '서버의 현재 상태를 검증한 뒤 신청을 취소합니다. 계속하시겠습니까?'))
+                return; cancel.disabled = true; d.element.dataset.busy = 'true'; void this.repo.cancelRequest(r.subscriptionRequestId, r.revision).then(result => { this.rememberRequest(result); if (!d.signal.aborted) {
+                d.close();
+                this.requestDetail(result);
+            } }).catch(e => { if (!d.signal.aborted)
+                d.body.append(this.errorNode(e)); }).finally(() => { cancel.disabled = false; d.element.dataset.busy = 'false'; }); }, 'btn danger');
+            d.footer.append(cancel);
+        }
+        d.footer.append((0, dom_1.button)('닫기', () => { d.close(); this.paint(); }, 'btn'));
+    }
+    entitlements() { const host = (0, dom_1.el)('div'); this.main.append(host); this.load(host, async (signal) => { const list = await this.repo.entitlements(signal); return (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'three-metrics', this.dataCard('조회 가능한 권한', list.length, '현재 사용자에게 허용된 조회', 'shield'), this.dataCard('사용 준비 완료', list.filter(e => e.readyToUse).length, '서버의 readyToUse 결과', 'check', 'mint'), this.dataCard('결과 확인 필요', list.filter(e => e.latestFulfillment?.status === 'UNKNOWN').length, 'Gateway 결과 불확실', 'activity', 'amber')), (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('접근권한 현황'), list.length ? (0, dom_1.table)([{ label: 'Entitlement ID', cell: (r) => (0, dom_1.button)(r.entitlementId, () => this.entitlementDetail(r), 'cell-link mono') }, { label: '권한 상태', cell: r => (0, dom_1.badge)(r.status) }, { label: 'Gateway 설정', cell: r => r.latestFulfillment ? (0, dom_1.badge)(r.latestFulfillment.status) : '미요청' }, { label: 'Credential', cell: r => r.credentialStatus ? (0, dom_1.badge)(r.credentialStatus) : '미확인' }, { label: '사용 준비', cell: r => (0, dom_1.badge)(r.readyToUse ? 'ACTIVE' : 'PENDING', r.readyToUse ? '준비 완료' : '미완료') }, { label: '상세', cell: r => (0, dom_1.button)('권한 범위', () => this.entitlementDetail(r), 'btn small') }], list, '접근권한 및 사용 준비') : (0, dom_1.empty)('접근권한이 없습니다.', '승인 이후 생성된 Entitlement를 조회합니다.'), (0, dom_1.notice)('승인 완료 ≠ 사용 준비 완료. Entitlement가 회수되면 Gateway 정리가 UNKNOWN이어도 권한을 되살리지 않습니다.'))); }); }
+    entitlementDetail(r) { const d = this.dialog('접근권한 상세', r.entitlementId); d.body.append((0, dom_1.kv)([['권한 상태', (0, dom_1.badge)(r.status)], ['서버 사용 준비 판정', (0, dom_1.badge)(r.readyToUse ? 'ACTIVE' : 'PENDING', r.readyToUse ? '준비 완료' : '미완료')], ['환경 ID', (0, dom_1.brief)(r.consumerAppEnvironmentId)], ['고정 ProductVersion', (0, dom_1.brief)(r.apiProductVersionId)], ['유효 시작', (0, dom_1.date)(r.effectiveFrom)], ['유효 종료', (0, dom_1.date)(r.effectiveTo)], ['Gateway 작업', r.latestFulfillment ? (0, dom_1.badge)(r.latestFulfillment.status) : '미확인'], ['Fulfillment ID', (0, dom_1.brief)(r.latestFulfillment?.accessFulfillmentId)], ['Credential 상태', r.credentialStatus ? (0, dom_1.badge)(r.credentialStatus) : '미확인']]), (0, dom_1.sectionTitle)('허용 Operation'), (0, dom_1.el)('div', 'id-list', ...r.operationScopes.map(s => (0, dom_1.el)('code', '', s.apiOperationId))), (0, dom_1.sectionTitle)('Quota'), r.quotaLimits.length ? (0, dom_1.table)([{ label: 'Metric', cell: (q) => M.scalar(q.metricCode) }, { label: '제한값', cell: q => M.scalar(q.limitValue) }, { label: 'Window (초)', cell: q => M.scalar(q.windowSeconds) }, { label: '단위', cell: q => M.scalar(q.unitCode) }], r.quotaLimits, 'Quota') : (0, dom_1.notice)('조회 결과에 Quota 항목이 없습니다. 이를 무제한 사용으로 해석하지 않습니다.')); d.footer.append((0, dom_1.button)('닫기', d.close, 'btn')); }
+    operations() {
+        const summaryHost = (0, dom_1.el)('div');
+        this.main.append(summaryHost);
+        this.load(summaryHost, async (signal) => { const s = await this.repo.summary(signal); const unknown = Object.values(s.integrations).reduce((n, x) => n + (x.operationStatusCounts.UNKNOWN ?? 0), 0), open = Object.values(s.integrations).reduce((n, x) => n + (x.issueStatusCounts.OPEN ?? 0), 0); return (0, dom_1.el)('div', 'three-metrics', this.dataCard('결과 확인 필요', unknown, '권한 내 연계 UNKNOWN 합계', 'activity', 'amber'), this.dataCard('미해결 대사 이슈', open, '권한 내 OPEN 이슈', 'alert', 'purple'), this.dataCard('Outbox 전달 대기', s.outboxStatusCounts.PENDING ?? '—', '외부 전달 완료가 아닌 저장 상태', 'document')); });
+        const tabs = (0, dom_1.el)('div', 'tabs');
+        for (const [k, label] of [['operations', '연계 작업'], ['issues', '대사 이슈'], ['outbox', 'Outbox'], ['connectors', 'Connector'], ['failures', '검색 갱신 실패']]) {
+            const b = (0, dom_1.button)(label, () => { this.opsKind = k; this.opsQuery = { page: 0, size: 10, status: '', order: 'NEWEST' }; this.paint(); }, 'tab' + (this.opsKind === k ? ' active' : ''));
+            tabs.append(b);
+        }
+        const type = (0, dom_1.select)('type', [['GATEWAY_IAM', 'Gateway · IAM'], ['APPROVAL_ITSM', '승인 · ITSM']], this.opsType);
+        const statusOptions = this.opsKind === 'issues' ? [['', '전체 상태'], ['OPEN', '미해결'], ['RESOLVED', '해결']] : this.opsKind === 'outbox' ? [['', '전체 상태'], ['PENDING', '전달 대기'], ['PUBLISHED', '전달 완료'], ['FAILED', '실패']] : [['', '전체 상태'], ['PENDING', '대기'], ['IN_PROGRESS', '처리 중'], ['SUCCEEDED', '처리 완료'], ['FAILED', '실패'], ['UNKNOWN', '결과 확인 필요']];
+        const status = (0, dom_1.select)('status', statusOptions, String(this.opsQuery.status ?? ''));
+        const order = (0, dom_1.select)('order', [['NEWEST', '최근순'], ['OLDEST', '과거순']], String(this.opsQuery.order ?? 'NEWEST'));
+        const filter = (0, dom_1.el)('form', 'filter-bar');
+        if (['operations', 'issues', 'connectors'].includes(this.opsKind))
+            filter.append((0, dom_1.field)('연계 유형', type));
+        if (['operations', 'issues', 'outbox'].includes(this.opsKind))
+            filter.append((0, dom_1.field)('상태', status));
+        filter.append((0, dom_1.field)('정렬', order));
+        const b = (0, dom_1.el)('button', 'btn navy', (0, dom_1.icon)('search'), '조회');
+        b.type = 'submit';
+        filter.append(b);
+        filter.addEventListener('submit', e => { e.preventDefault(); this.opsType = type.value; this.opsQuery = { page: 0, size: 10, order: order.value, status: status.value }; this.paint(); });
+        const host = (0, dom_1.el)('div');
+        const card = (0, dom_1.el)('section', 'card', (0, dom_1.el)('div', 'result-toolbar', (0, dom_1.el)('h2', '', '운영 조회'), (0, dom_1.el)('div', 'toolbar-right', (0, dom_1.button)('복구 기록 ID 조회', () => this.lookupRecovery(), 'btn', 'search'), (0, dom_1.button)('수동 복구 요청', () => this.recoveryForm(), 'btn primary', 'refresh'))), tabs, filter, host);
+        this.main.append(card, (0, dom_1.notice)('UNKNOWN 작업을 자동 재전송하지 않습니다. 수동 복구도 기존 상태를 조회하며 대상 업무를 강제 성공으로 변경하지 않습니다.'));
+        this.load(host, async (signal) => { const q = { ...this.opsQuery }; if (['operations', 'issues', 'connectors'].includes(this.opsKind))
+            q.type = this.opsType;
+        else
+            delete q.type; if (!['operations', 'issues', 'outbox'].includes(this.opsKind))
+            delete q.status; const page = await this.repo.rows(this.opsKind, q, signal); const kind = this.opsKind; const columnKeys = { operations: [['operationType', '작업 유형'], ['aggregateId', '업무 대상 ID'], ['status', '상태'], ['attemptCount', '시도'], ['safeErrorCode', '오류 코드'], ['createdAt', '생성 일시']], issues: [['issueType', '이슈 유형'], ['integrationOperationId', '연계 작업 ID'], ['status', '상태'], ['safeDetailCode', '상세 코드'], ['openedAt', '관측 일시']], outbox: [['eventType', '이벤트'], ['aggregateId', '업무 대상 ID'], ['status', '상태'], ['publishAttempts', '시도'], ['createdAt', '생성 일시']], connectors: [['connectorCode', 'Connector'], ['adapterCode', 'Adapter'], ['authorityCode', 'Authority'], ['enabled', '설정 활성'], ['healthStatus', '실제 건강 상태']], failures: [['apiProductId', 'Product ID'], ['status', '상태'], ['safeErrorCode', '실패 코드'], ['lastCheckedAt', '최근 관측'], ['rowVersion', 'Revision']] }; const columns = columnKeys[kind].map(([key, label]) => ({ label, cell: (r) => key === 'status' || key === 'healthStatus' ? (0, dom_1.badge)(M.scalar(r[key])) : key === 'enabled' ? (0, dom_1.badge)(r[key] === true ? 'ACTIVE' : 'SUSPENDED', r[key] === true ? '설정 ON' : '설정 OFF') : key.endsWith('At') ? (0, dom_1.date)(typeof r[key] === 'string' ? String(r[key]) : null) : key.endsWith('Id') ? (0, dom_1.brief)(M.scalar(r[key])) : M.scalar(r[key]) })); columns.push({ label: '상세', cell: r => (0, dom_1.button)('상세', () => this.operationDetail(kind, r), 'btn small') }); return (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'list-meta', (0, dom_1.el)('span', '', '조회 결과 ', (0, dom_1.el)('strong', 'count', page.totalElements), '건'), (0, dom_1.el)('span', 'muted', '조회 기준: ' + (0, dom_1.date)(page.asOf))), page.items.length ? (0, dom_1.table)(columns, page.items, '운영 ' + kind) : (0, dom_1.empty)('조건에 맞는 운영 기록이 없습니다.', '조회 유형과 상태를 확인해 주세요.'), this.pager(page, n => { this.opsQuery.page = n; this.paint(); }), kind === 'connectors' ? (0, dom_1.notice)('enabled=true는 저장된 활성 설정일 뿐, 실제 외부 연결이 건강하다는 뜻은 아닙니다.') : kind === 'outbox' ? (0, dom_1.notice)('Production 전달은 별도 Gate입니다. 이 화면에는 강제 PUBLISHED 또는 임의 재전송 버튼이 없습니다.') : null); });
+    }
+    operationDetail(kind, row) {
+        const d = this.dialog('운영 기록 상세', M.scalar(row.id));
+        d.body.append((0, dom_1.kv)(Object.entries(row).map(([k, v]) => [k, k === 'status' ? (0, dom_1.badge)(M.scalar(v)) : M.scalar(v)])), (0, dom_1.notice)('표시된 필드는 안전한 메타데이터입니다. 원본 payload, 비밀키, Secret 참조를 조회하지 않습니다.'));
+        if (kind === 'failures')
+            d.footer.append((0, dom_1.button)('Product 재색인 요청', () => { d.close(); this.recoveryForm('SEARCH_PRODUCT_REINDEX', M.scalar(row.apiProductId)); }, 'btn primary', 'refresh'));
+        if (kind === 'operations' && row.aggregateType === 'ACCESS_FULFILLMENT')
+            d.footer.append((0, dom_1.button)('Gateway 상태 재조회', () => { d.close(); this.recoveryForm('GATEWAY_STATUS_RECONCILE', M.scalar(row.aggregateId)); }, 'btn primary', 'refresh'));
+        d.footer.append((0, dom_1.button)('닫기', d.close, 'btn'));
+    }
+    recoveryForm(initialType = 'GATEWAY_STATUS_RECONCILE', target = '') {
+        const d = this.dialog('통제된 수동 복구', '허용된 네 가지 작업만 실행합니다. 외부 요청을 무조건 재전송하지 않습니다.');
+        const type = (0, dom_1.select)('actionType', Object.entries(M.RECOVERY_TYPES), initialType);
+        const id = (0, dom_1.input)('targetId', 'UUID 형식의 대상 ID', target);
+        const revision = (0, dom_1.input)('expectedTargetVersion', '현재 대상 revision (선택)', '', 'number');
+        revision.min = '0';
+        revision.step = '1';
+        const helper = (0, dom_1.el)('p', 'field-hint');
+        const adapt = () => { const t = type.value; helper.textContent = t === 'APPROVAL_STATUS_RECONCILE' ? 'ApprovalReference ID가 필요합니다. SubscriptionRequest ID와 다릅니다.' : t === 'GATEWAY_STATUS_RECONCILE' ? 'AccessFulfillment ID가 필요합니다. 이미 처리 중인 대상을 강제 복구하지 않습니다.' : t === 'SEARCH_PRODUCT_REINDEX' ? 'API Product ID와 필요한 경우 현재 Product revision을 입력합니다. 실패 관측 rowVersion과는 다릅니다.' : '서버가 확인한 현재 Tenant만 전체 재색인합니다.'; id.readOnly = t === 'SEARCH_TENANT_REBUILD'; if (id.readOnly)
+            id.value = this.context?.tenantId ?? ''; revision.disabled = id.readOnly; };
+        type.addEventListener('change', () => { id.value = ''; revision.value = ''; adapt(); });
+        adapt();
+        const form = (0, dom_1.el)('form', 'form-grid', (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('복구 작업', type, true)), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('대상 ID', id, true), helper), (0, dom_1.el)('div', 'span-two', (0, dom_1.field)('대상 revision', revision)), (0, dom_1.el)('div', 'span-two', (0, dom_1.notice)('재조회 작업이 SUCCEEDED여도 대상 상태가 PENDING·UNKNOWN이면 실제 업무 완료는 아닙니다.')));
+        d.body.append(form);
+        this.formAction(d, form, this.isDemo() ? '복구 화면 체험' : '서버에 복구 요청', key => this.repo.recover({ actionType: type.value, targetId: id.value, expectedTargetVersion: revision.disabled || revision.value === '' ? null : Number(revision.value) }, key), r => this.recoveryResult(r), true);
+    }
+    recoveryResult(r) { return this.result('복구 작업 처리 결과', [['복구 실행 ID', (0, dom_1.el)('div', 'copy-field', (0, dom_1.brief)(M.scalar(r.recoveryActionId)), (0, dom_1.copyButton)(M.scalar(r.recoveryActionId)))], ['작업 처리 상태', (0, dom_1.badge)(M.scalar(r.actionStatus))], ['대상 업무 상태', (0, dom_1.badge)(M.scalar(r.targetStatus))], ['작업', M.RECOVERY_TYPES[M.scalar(r.actionType)] ?? M.scalar(r.actionType)], ['대상 ID', (0, dom_1.brief)(M.scalar(r.targetId))], ['결과 코드', M.scalar(r.safeResultCode)]], '작업 처리 성공과 실제 업무 완료는 다릅니다. UNKNOWN/IN_PROGRESS를 시간만 보고 다시 실행하지 않습니다.'); }
+    lookupRecovery() { const d = this.dialog('복구 실행기록 조회'); const id = (0, dom_1.input)('recoveryActionId', 'Recovery Action ID'); const f = (0, dom_1.el)('form', 'inline-form', (0, dom_1.field)('복구 실행 ID', id, true)); const b = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('search'), '조회'); b.type = 'submit'; const host = (0, dom_1.el)('div'); f.append(b); d.body.append(f, host); let seq = 0; f.addEventListener('submit', e => { e.preventDefault(); if (!f.reportValidity())
+        return; const n = ++seq; host.replaceChildren((0, dom_1.loading)()); void this.repo.recovery(id.value, d.signal).then(r => { if (n === seq && !d.signal.aborted)
+        host.replaceChildren(this.recoveryResult(r)); }).catch(e => { if (n === seq && !d.signal.aborted)
+        host.replaceChildren(this.errorNode(e)); }); }); d.footer.append((0, dom_1.button)('닫기', d.close, 'btn')); }
+    audit() {
+        const from = (0, dom_1.input)('from', '', '', 'date'), to = (0, dom_1.input)('to', '', '', 'date');
+        if (this.auditQuery.from)
+            from.value = String(this.auditQuery.from).slice(0, 10);
+        if (this.auditQuery.to)
+            to.value = String(this.auditQuery.to).slice(0, 10);
+        const action = (0, dom_1.input)('action', 'Action 정확히 일치', String(this.auditQuery.action ?? ''));
+        const correlation = (0, dom_1.input)('correlationId', 'Correlation ID', String(this.auditQuery.correlationId ?? ''));
+        const outcome = (0, dom_1.select)('outcome', [['', '전체 결과'], ['SUCCESS', '성공'], ['DENIED', '권한 거절']], String(this.auditQuery.outcome ?? ''));
+        const f = (0, dom_1.el)('form', 'filter-bar audit-filter', (0, dom_1.field)('시작일 (UTC 포함)', from), (0, dom_1.field)('종료일 (UTC 미포함)', to), (0, dom_1.field)('Action', action), (0, dom_1.field)('처리 결과', outcome), (0, dom_1.field)('Correlation ID', correlation));
+        const b = (0, dom_1.el)('button', 'btn navy', (0, dom_1.icon)('search'), '조회');
+        b.type = 'submit';
+        f.append(b);
+        const err = (0, dom_1.el)('div');
+        f.addEventListener('submit', e => { e.preventDefault(); if (from.value && to.value && (from.value >= to.value || (new Date(to.value).getTime() - new Date(from.value).getTime()) > 31 * 86400000)) {
+            err.replaceChildren((0, dom_1.notice)('종료일은 시작일보다 이후여야 하며 조회 범위는 31일 이내입니다. 종료일은 포함하지 않습니다.', 'warn'));
+            return;
+        } this.auditQuery = { page: 0, size: 10, order: 'NEWEST', from: from.value ? from.value + 'T00:00:00Z' : undefined, to: to.value ? to.value + 'T00:00:00Z' : undefined, action: action.value || undefined, outcome: outcome.value || undefined, correlationId: correlation.value || undefined }; this.paint(); });
+        const host = (0, dom_1.el)('div');
+        const card = (0, dom_1.el)('section', 'card', f, err, host);
+        this.main.append(card, (0, dom_1.notice)('AUDIT:READ 권한을 독립적으로 확인합니다. 원문 diff, Secret, 원본 payload는 조회하지 않습니다.'));
+        this.load(host, async (signal) => { const page = await this.repo.rows('audit', this.auditQuery, signal); return (0, dom_1.el)('div', '', (0, dom_1.el)('div', 'result-toolbar', (0, dom_1.el)('h2', '', '감사 기록 ', (0, dom_1.el)('span', 'count', page.totalElements)), (0, dom_1.el)('span', 'muted', 'Tenant 범위 · 정확히 일치하는 필터')), page.items.length ? (0, dom_1.table)([{ label: '처리 시각', cell: (r) => (0, dom_1.date)(M.scalar(r.occurredAt)) }, { label: '실행 사용자', cell: r => M.scalar(r.actorPrincipalId) }, { label: 'Action', cell: r => (0, dom_1.el)('code', '', M.scalar(r.action)) }, { label: '리소스 유형', cell: r => M.scalar(r.resourceType) }, { label: '결과', cell: r => (0, dom_1.badge)(M.scalar(r.outcome)) }, { label: 'Correlation ID', cell: r => (0, dom_1.brief)(M.scalar(r.correlationId)) }, { label: '상세', cell: r => (0, dom_1.button)('상세', () => this.operationDetail('audit', r), 'btn small') }], page.items, '감사 기록') : (0, dom_1.empty)('조회 조건에 해당하는 감사 기록이 없습니다.', '기간과 정확히 일치하는 필터값을 확인해 주세요.'), this.pager(page, n => { this.auditQuery.page = n; this.paint(); })); });
+    }
+    settings() {
+        const current = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('화면 실행 모드'), (0, dom_1.el)('div', 'connection-summary', (0, dom_1.el)('span', 'connection-icon', (0, dom_1.icon)(this.isDemo() ? 'globe' : 'server')), (0, dom_1.el)('div', '', (0, dom_1.el)('h3', '', this.isDemo() ? '예시 데이터로 미리보기' : '실제 서버 연결 모드'), (0, dom_1.el)('p', 'muted', this.isDemo() ? '별도 설치·서버·DB 없이 화면을 조작할 수 있습니다.' : '같은 origin의 /api/v1로만 연결합니다.'))), (0, dom_1.kv)([['데이터 출처', this.isDemo() ? '브라우저 메모리의 합성 예시 데이터' : '서버 응답 · 권한과 Tenant는 서버 판정'], ['외부 요청', this.isDemo() ? '전송하지 않음' : '고정 API 경로만 사용 · 자동 재시도 없음'], ['화면 구성', '10개 메뉴 + 주요 입력·상세 화면'], ['인증정보 보관', '메모리 한정 · 브라우저 저장소/URL에 저장하지 않음']]));
+        if (this.connectionError)
+            current.append((0, dom_1.notice)(this.connectionError, 'warn'));
+        const token = (0, dom_1.input)('bearerToken', '개발·검증용 Bearer token (필요한 경우)', '', 'password', 8192);
+        token.autocomplete = 'off';
+        token.spellcheck = false;
+        const f = (0, dom_1.el)('form', 'connect-form', (0, dom_1.field)('서버 인증', token, false, '기존 OIDC 로그인 연동은 별도입니다. 발급받은 검증용 토큰만 입력하며 전송 중 노출되는 URL에는 넣지 않습니다.'));
+        const connect = (0, dom_1.el)('button', 'btn primary', (0, dom_1.icon)('link'), '서버 연결 확인');
+        connect.type = 'submit';
+        const status = (0, dom_1.el)('div');
+        if (location.protocol === 'file:') {
+            connect.disabled = true;
+            status.append((0, dom_1.notice)('파일 더블클릭 모드에서는 서버 연결을 열지 않습니다. 아래 실행 안내의 로컬 서버 또는 기존 Vite에서 연결해 주세요.'));
+        }
+        f.append(status, (0, dom_1.el)('div', 'form-actions', (0, dom_1.button)('예시 데이터 초기화', () => { if (window.confirm('예시 입력과 즐겨찾기를 초기화하고 화면을 다시 시작할까요?')) {
+            this.switchDemo();
+        } }, 'btn', 'refresh'), connect));
+        let pending = false;
+        f.addEventListener('submit', e => {
+            e.preventDefault();
+            if (pending || location.protocol === 'file:')
+                return;
+            pending = true;
+            connect.disabled = true;
+            status.replaceChildren((0, dom_1.loading)());
+            const previous = this.repo;
+            if (previous instanceof data_1.LiveRepository)
+                previous.clear();
+            let repo;
+            try {
+                repo = new data_1.LiveRepository(token.value);
+            }
+            catch (err) {
+                status.replaceChildren(this.errorNode(err));
+                pending = false;
+                connect.disabled = false;
+                return;
+            }
+            token.value = '';
+            this.repo = repo;
+            this.context = null;
+            this.sessionRequests = [];
+            this.favorites.clear();
+            this.catalogQuery = queryDefaults();
+            this.connectionError = '';
+            // Replace the whole view before the handshake: no demo rows remain while in live mode.
+            this.paint();
+            const signal = this.controller.signal;
+            void repo.context(signal).then(ctx => { if (this.repo === repo && !signal.aborted) {
+                this.context = ctx;
+                this.connectionError = '';
+                this.toast('서버의 Tenant Context를 확인했습니다.');
+                this.paint();
+            } }).catch(err => { if (this.repo === repo && !signal.aborted) {
+                this.connectionError = err instanceof Error ? err.message : '서버 연결 실패';
+                this.paint();
+            } }).finally(() => { pending = false; connect.disabled = false; });
+        });
+        current.append(f);
+        const contextCard = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('현재 Tenant Context'), this.context ? (0, dom_1.kv)([['Tenant 코드', this.context.tenantCode], ['Tenant ID', (0, dom_1.brief)(this.context.tenantId)], ['Principal', this.context.principalId], ['Membership', (0, dom_1.brief)(this.context.membershipId)], ['Organization', (0, dom_1.brief)(this.context.organizationId)], ['Locale', this.context.locale], ['Role 코드', this.context.roles.join(', ') || '없음']]) : (0, dom_1.notice)('아직 서버가 확인한 Tenant Context가 없습니다.', 'warn'), (0, dom_1.notice)('화면에서 Tenant를 임의 선택하거나 Role 이름으로 권한을 추정하지 않습니다. 실제 권한은 서버의 각 API에서 검증합니다.'));
+        if (this.repo instanceof data_1.DemoRepository) {
+            const scenario = (0, dom_1.select)('scenario', [['normal', '정상 예시'], ['empty', '빈 목록'], ['forbidden', '권한 없음 (403)'], ['error', '서버 오류'], ['slow', '응답 지연 · Loading']], this.repo.scenario);
+            const controls = (0, dom_1.el)('div', 'scenario-control', (0, dom_1.field)('화면 상태 검증 시나리오', scenario), (0, dom_1.button)('카탈로그에서 확인', () => { if (this.repo instanceof data_1.DemoRepository)
+                this.repo.scenario = scenario.value; this.go('catalog'); }, 'btn', 'arrow'));
+            current.append(controls);
+        }
+        else
+            current.append((0, dom_1.button)('연결 종료 · 예시 모드로 전환', () => this.switchDemo(), 'btn', 'globe'));
+        const run = (0, dom_1.el)('section', 'card', (0, dom_1.sectionTitle)('개발자 실행 안내'), (0, dom_1.el)('div', 'run-steps', (0, dom_1.el)('div', '', (0, dom_1.el)('span', 'step-number', '01'), (0, dom_1.el)('h3', '', '미리보기'), (0, dom_1.el)('p', '', 'START_UI_PREVIEW.html을 더블클릭합니다. 서버 설치는 필요 없습니다.')), (0, dom_1.el)('div', '', (0, dom_1.el)('span', 'step-number', '02'), (0, dom_1.el)('h3', '', '로컬 API 연결'), (0, dom_1.el)('p', '', '백엔드가 127.0.0.1:8080에서 실행 중이면 아래 명령을 사용합니다.')), (0, dom_1.el)('div', '', (0, dom_1.el)('span', 'step-number', '03'), (0, dom_1.el)('h3', '', '실제 데이터 확인'), (0, dom_1.el)('p', '', '서버 모드에서 인증을 확인하고 화면별 권한·오류·저장 결과를 검증합니다.'))), (0, dom_1.el)('pre', 'command', 'python3 scripts/start_ui_preview.py --api-proxy'), (0, dom_1.notice)('백엔드 실행·실제 DB·ITSM·Gateway 연동 검증과 전체 업무 화면 완성은 별도입니다. 미리보기 정상 실행을 제품 출시 승인으로 해석하지 않습니다.'));
+        this.main.append((0, dom_1.el)('div', 'settings-grid', current, contextCard), run);
+    }
+    switchDemo() { if (this.repo instanceof data_1.LiveRepository)
+        this.repo.clear(); this.repo = new data_1.DemoRepository(); this.context = { ...data_1.DEMO_CONTEXT }; this.connectionError = ''; this.sessionRequests = []; this.favorites.clear(); this.catalogQuery = queryDefaults(); this.opsQuery = { page: 0, size: 10, status: '', order: 'NEWEST' }; this.paint(); }
+}
+const SAMPLE_OPENAPI = JSON.stringify({ openapi: '3.0.3', info: { title: 'Demo Employee API', version: '1.0.0' }, paths: { '/employees/{employeeId}': { get: { operationId: 'getEmployee', summary: 'Synthetic demo employee lookup', parameters: [{ name: 'employeeId', in: 'path', required: true, schema: { type: 'string' } }], responses: { '200': { description: 'Demo response' } } } } } }, null, 2);
+
+},
+"standalone":function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const portal_1 = require("./portal");
+const root = document.getElementById('root');
+if (root)
+    (0, portal_1.mountPortal)(root);
+
+}
+};const cache=Object.create(null);function load(name){name=name.replace(/^\.\//,"");if(cache[name])return cache[name].exports;if(!Object.hasOwn(modules,name))throw new Error("Unknown bundled module");const m={exports:{}};cache[name]=m;modules[name](load,m,m.exports);return m.exports;}load("standalone");})();</script></body></html>
